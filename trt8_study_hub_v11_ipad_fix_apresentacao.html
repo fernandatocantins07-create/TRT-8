@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRT-8 Study Hub • Mentoria</title>
+<style>
+:root{--bg:#fbf8f7;--surface:#fff;--soft:#fff4f7;--rose:#c88498;--roseD:#965c6c;--line:#eadde2;--text:#403a39;--muted:#8d807e;--green:#e8f0ea;--gold:#f3eadc;--shadow:0 10px 28px rgba(96,70,78,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:238px 1fr;min-height:100vh}
+aside{height:100vh;position:sticky;top:0;background:linear-gradient(180deg,#f7e6eb,#f8eff2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
+.brand{display:flex;gap:10px;align-items:center;padding:6px 8px 18px}.brandmark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--rose),#e6b2c0);display:grid;place-items:center;color:#fff;font-weight:800}.brand h1{font-size:15px;margin:0}.brand small{color:var(--muted)}
+.navlabel{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#aa8d96;margin:12px 10px 5px}
+.nav button{border:0;background:transparent;width:100%;padding:9px 10px;text-align:left;border-radius:11px;color:#655b59;font-size:13px}.nav button:hover,.nav button.active{background:#fff;color:#7d4e5b;box-shadow:0 5px 16px rgba(96,70,78,.06)}.foot{margin-top:auto;padding:10px;color:var(--muted);font-size:11px}
+main{min-width:0}header{height:66px;position:sticky;top:0;z-index:5;background:rgba(251,248,247,.94);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 26px;gap:10px}.spacer{flex:1}
+.chip,.btn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 12px;font-size:12px;color:var(--text)}.btn.primary{background:var(--rose);border-color:var(--rose);color:#fff}.btn.soft{background:var(--soft);color:var(--roseD)}.btn.danger{color:#9c5262;background:#fff7f8}
+.content{max-width:1420px;margin:auto;padding:26px}.page{display:none}.page.active{display:block}.eyebrow{font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:var(--rose)}h2{font-size:30px;letter-spacing:-.04em;margin:5px 0 5px}.lead{font-size:13px;color:var(--muted);margin:0;line-height:1.55}
+.hero{border:1px solid var(--line);background:linear-gradient(135deg,#fff,#fff6f8);border-radius:21px;padding:24px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}.c4{grid-template-columns:repeat(4,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c2{grid-template-columns:repeat(2,1fr)}.card{border:1px solid var(--line);background:#fff;border-radius:17px;padding:17px;box-shadow:0 7px 20px rgba(96,70,78,.045)}.card h3{font-size:14px;margin:0 0 10px}.metric strong{font-size:25px;display:block;letter-spacing:-.04em}.metric small,.muted{font-size:11px;color:var(--muted)}
+.empty{padding:30px;text-align:center;border:1px dashed #dfcbd1;background:#fffafb;border-radius:16px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:6px}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.stack{display:grid;gap:9px}.item{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);background:#fff;border-radius:13px}.item main{flex:1}.item strong{font-size:12px}.tag{border-radius:999px;background:#f5e2e8;color:#875564;padding:5px 8px;font-size:10px;font-weight:700}.tag.gray{background:#f0eded;color:#777}.tag.green{background:var(--green);color:#617568}
+.tabs{display:flex;gap:7px;margin:15px 0}.tabs button.active{background:var(--rose);color:#fff;border-color:var(--rose)}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.control{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 11px;outline:none;color:var(--text)}label.lbl{font-size:11px;color:var(--muted);display:grid;gap:5px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.day{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px;min-height:135px}.day h4{margin:0;font-size:11px}.day small{color:var(--muted)}.session{background:var(--soft);border-left:3px solid var(--rose);padding:7px;border-radius:8px;margin-top:7px;font-size:10px}
+.avail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.avail-card{border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px;display:grid;gap:10px;min-width:0}
+.avail-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.avail-name{font-size:12px;font-weight:750}
+.avail-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.avail-card .control{min-width:0}
+@media(max-width:720px){.avail-grid{grid-template-columns:1fr}.avail-fields{grid-template-columns:1fr}}
+.progress{height:7px;background:#f0e8ea;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:var(--rose)}
+.toolbar{display:grid;grid-template-columns:1fr 230px 180px auto;gap:9px;margin:15px 0}.group{font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.08em;color:#a17a85;margin:20px 0 7px}
+.topic{border:1px solid var(--line);background:#fff;border-radius:14px;margin-bottom:8px;overflow:hidden}.topichead{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:13px 14px;cursor:pointer}.topicbody{display:none;padding:0 14px 14px 44px}.topic.open .topicbody{display:block}.subs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.sub{font-size:11px;background:#fbf4f6;padding:8px 9px;border-radius:9px}input[type=checkbox]{accent-color:var(--rose)}
+.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.table th{font-size:10px;text-transform:uppercase;color:var(--muted)}.timer{font-size:62px;letter-spacing:-.05em;text-align:center;font-variant-numeric:tabular-nums;margin:25px 0 5px}
+.modal{display:none;position:fixed;inset:0;background:rgba(55,43,47,.26);z-index:20;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalbox{width:min(620px,100%);max-height:90vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 20px 70px rgba(55,43,47,.18)}.modalbox h3{margin:0 0 14px}
+.course{display:flex;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.courseicon{width:42px;height:42px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-weight:800;color:var(--roseD)}
+.notice{font-size:11px;background:#fff8ea;border:1px solid #eee0bd;color:#786542;padding:11px 12px;border-radius:12px}
+@media(max-width:1000px){.app{grid-template-columns:82px 1fr}.brand div:last-child,.navlabel,.nav .txt,.foot{display:none}.nav button{text-align:center}.c4{grid-template-columns:repeat(2,1fr)}.week{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:720px){.app{grid-template-columns:1fr}aside{position:fixed;bottom:0;top:auto;left:0;right:0;height:62px;z-index:15;display:block;padding:7px;overflow-x:auto;white-space:nowrap}.brand,.navlabel,.foot{display:none}.nav{display:inline-flex}.nav button{width:auto;min-width:65px}main{padding-bottom:68px}.c4,.c3,.c2,.formgrid{grid-template-columns:1fr}.week{grid-template-columns:1fr 1fr}.toolbar{grid-template-columns:1fr}.subs{grid-template-columns:1fr}}
+@media print{aside,header,.no-print{display:none!important}.app{display:block}.content{padding:0}.page{display:none!important}#printPage{display:block!important}body{background:#fff}}
+
+.linked-panel{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+.mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:9px}
+.mini-stat{background:#fbf5f7;border:1px solid var(--line);border-radius:11px;padding:9px;min-width:0}
+.mini-stat strong{display:block;font-size:14px}.mini-stat span{font-size:10px;color:var(--muted)}
+.topic-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.topic-insight{margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:11px;background:#fffafb}
+@media(max-width:720px){.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.mentor-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.mentor-hero{background:linear-gradient(135deg,#fff9fa,#f7ecef);border:1px solid var(--line);border-radius:18px;padding:18px}
+.alert-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.alert-dot{width:9px;height:9px;border-radius:50%;background:#a86f79;margin-top:5px;flex:none}
+.priority-card{padding:12px;border:1px solid var(--line);border-radius:13px;background:white}
+.weekly-bars{display:grid;gap:8px}
+.bar-row{display:grid;grid-template-columns:90px 1fr 58px;gap:8px;align-items:center}
+.bar-track{height:8px;background:#efe7e9;border-radius:20px;overflow:hidden}
+.bar-fill{height:100%;background:#b8838c;border-radius:20px}
+.energy-row{display:flex;gap:8px;flex-wrap:wrap}
+.energy-btn{padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:white;cursor:pointer}
+.energy-btn.active{background:#f2e4e7;border-color:#b8838c}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-head{font-size:10px;color:var(--muted);text-align:center;padding:4px}
+.cal-day{min-height:92px;border:1px solid var(--line);border-radius:10px;padding:7px;background:white;overflow:hidden}
+.cal-day.today{outline:2px solid #c69aa4}
+.cal-day.muted{opacity:.4}
+.cal-num{font-size:11px;font-weight:700}
+.cal-event{font-size:9px;margin-top:5px;padding:3px 5px;border-radius:7px;background:#f7ecef;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.error-tag{display:inline-block;font-size:9px;padding:3px 6px;border-radius:999px;background:#f7ecef;margin:2px}
+@media(max-width:850px){.mentor-grid{grid-template-columns:1fr}.calendar-grid{gap:3px}.cal-day{min-height:78px;padding:5px}}
+</style>
+
+<style id="v7-modern-skin">
+:root{
+  --bg:#f3f4f1;
+  --surface:#ffffff;
+  --surface2:#f8f8f5;
+  --sidebar:#202521;
+  --sidebar2:#292f2a;
+  --accent:#a85f46;
+  --accentD:#7e4938;
+  --sage:#788375;
+  --sageSoft:#e9ede7;
+  --blue:#617681;
+  --blueSoft:#eaf0f2;
+  --line:#dde0da;
+  --lineStrong:#cfd3cb;
+  --text:#252a26;
+  --muted:#747b74;
+  --green:#e6eee7;
+  --gold:#f3ead9;
+  --soft:#f3eee9;
+  --rose:#a85f46;
+  --roseD:#7e4938;
+  --shadow:0 10px 28px rgba(34,40,35,.055);
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-feature-settings:"tnum" 1,"ss01" 1;-webkit-font-smoothing:antialiased}
+.app{grid-template-columns:248px minmax(0,1fr)}
+aside{background:var(--sidebar);border-right:0;padding:18px 12px 14px;color:#f5f4ef;box-shadow:8px 0 32px rgba(25,29,26,.05);overflow:hidden}
+.brand{padding:5px 8px 17px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+.brandmark{width:36px;height:36px;border-radius:10px;background:#f0eee7;color:#232823;font-size:12px;box-shadow:none}
+.brand h1{color:#faf9f4;font-weight:680;letter-spacing:-.02em}.brand small{color:#99a198;font-size:10px}
+.nav-scroll{overflow-y:auto;overflow-x:hidden;padding-right:2px;scrollbar-width:thin;scrollbar-color:#444b45 transparent}
+.navlabel{color:#818a82;margin:17px 10px 6px;font-size:9px;letter-spacing:.13em}
+.nav{display:grid;gap:2px}.nav button{color:#c2c8c2;border:0;border-radius:9px;padding:9px 10px;font-size:12px;transition:.15s ease;display:flex;gap:10px;align-items:center;min-height:37px}
+.nav button:hover{background:rgba(255,255,255,.055);color:#fff;box-shadow:none}.nav button.active{background:#f0eee7;color:#222722;box-shadow:none;font-weight:650}
+.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding:12px 9px 0;color:#7f887f}.foot strong{color:#bfc5bf;font-size:10px}.foot span{font-size:9px}
+header{height:64px;background:rgba(243,244,241,.91);border-bottom:1px solid var(--line);padding:0 28px;backdrop-filter:blur(14px)}
+header .chip:first-child{background:transparent;border:0;padding-left:0;font-weight:650;color:#4a514a}
+.content{max-width:1500px;padding:30px 32px 48px}
+.page{animation:fadeUp .18s ease}@keyframes fadeUp{from{opacity:.45;transform:translateY(3px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--accent);font-size:9px;letter-spacing:.14em}
+h2{font-size:30px;font-weight:670;color:#202521;letter-spacing:-.045em}.lead{font-size:12px;color:var(--muted);max-width:820px}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:17px;box-shadow:none;padding:24px}
+.command-hero{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:28px;align-items:end;position:relative;overflow:hidden}
+.command-hero:after{content:"";position:absolute;right:-70px;top:-90px;width:220px;height:220px;border:1px solid #e2e4de;border-radius:50%;pointer-events:none}
+.hero-copy{position:relative;z-index:1}.hero-status{position:relative;z-index:1;background:#262c27;color:#fff;border-radius:14px;padding:16px;display:grid;gap:4px}.hero-status strong{font-size:18px;font-weight:600}.hero-status small{color:#adb5ad}.status-kicker{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#d6a28f}
+.card{border:1px solid var(--line);border-radius:14px;box-shadow:none;padding:16px}.card:hover{border-color:var(--lineStrong)}
+.metrics-row .card{min-height:112px;display:flex;flex-direction:column;justify-content:space-between}.metric small{font-size:10px;text-transform:uppercase;letter-spacing:.06em}.metric strong{font-size:28px;font-weight:640;margin:7px 0 3px}.metric-foot{font-size:10px;color:#939a93}
+.section-card{padding:17px}.section-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}.section-title h3{font-size:15px;margin:2px 0 0}.decision-list{display:grid;gap:0}.decision-list>div{display:grid;grid-template-columns:32px 1fr;gap:8px;padding:11px 0;border-top:1px solid var(--line);font-size:11px}.decision-list>div:first-child{border-top:0}.decision-list b{font-size:9px;color:var(--accent)}
+.btn,.chip{border-color:var(--lineStrong);border-radius:9px;background:#fff;color:#343a34;padding:8px 11px;font-size:11px;box-shadow:none}.btn:hover{border-color:#aeb4ab;background:#fafaf7}.btn.primary{background:#26302a;border-color:#26302a;color:#fff}.btn.primary:hover{background:#1e2520}.btn.soft{background:var(--sageSoft);border-color:#d9dfd6;color:#4d5b4e}.btn.quiet{background:transparent}.btn.mini{padding:6px 8px;font-size:10px}.btn.danger{background:#fff;color:#934d43;border-color:#ead7d2}
+.tag{background:var(--sageSoft);color:#526053;padding:4px 7px;font-size:9px}.tag.gray{background:#eff0ed;color:#747a74}.tag.green{background:#e5eee7;color:#506a55}.tag.gold{background:#f4ead7;color:#7a6640}
+.control{border-color:var(--lineStrong);border-radius:9px;background:#fff;padding:9px 10px;font-size:11px}.control:focus{border-color:#8f9a8c;box-shadow:0 0 0 3px rgba(120,131,117,.10)}
+label.lbl{color:#656d65;font-size:10px;font-weight:560}
+.tabs{padding:3px;background:#e9ebe6;border-radius:11px;width:max-content;max-width:100%;overflow:auto}.tabs .btn{border:0;background:transparent}.tabs .btn.active{background:#fff;color:#242a25;border:0;box-shadow:0 2px 7px rgba(30,36,31,.06)}
+.notice{background:#f3f0e8;border-color:#e2dccb;color:#6f654c;border-radius:10px}.empty{background:#f9f9f6;border-color:#d9ddd6;border-radius:12px}
+.item{border-radius:11px;background:#fff;padding:10px 11px}.course{border-radius:11px}.courseicon{border-radius:9px;background:#edf0eb;color:#566154}
+.avail-card{border-radius:12px;padding:14px;background:#fafbf8}.avail-name{font-size:12px}.avail-top{border-bottom:1px solid var(--line);padding-bottom:9px}
+.week{gap:7px}.day{border-radius:11px;min-height:145px;padding:10px}.day h4{font-size:10px;text-transform:uppercase;letter-spacing:.05em}.session{background:#edf0eb;border-left:2px solid var(--sage);border-radius:7px;color:#3c453d}.session b{font-weight:650}
+.group{color:#6f796e;font-size:9px;border-bottom:1px solid var(--line);padding-bottom:6px}.topic{border-radius:11px}.topichead{padding:12px 13px}.sub{background:#f3f4f0;border-radius:7px}.mini-stat{background:#f7f8f5;border-color:var(--line);border-radius:9px}.topic-insight{background:#f8f9f6;border-radius:9px}
+.mentor-hero{background:#fff;border-color:var(--line);border-radius:15px;position:relative;overflow:hidden}.mentor-hero:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.alert-dot{background:var(--accent);width:7px;height:7px}.priority-card{border-radius:10px;background:#fafbf8}.energy-btn{border-radius:9px;font-size:10px}.energy-btn.active{background:#27302a;color:#fff;border-color:#27302a}
+.bar-track{background:#e8ebe5}.bar-fill{background:var(--sage)}
+.calendar-grid{gap:5px}.cal-day{border-radius:9px;background:#fff;min-height:98px}.cal-day.today{outline:2px solid var(--accent);outline-offset:-2px}.cal-event{background:#edf0eb;color:#435045;border-radius:5px}.cal-num{font-size:10px}
+.error-tag{background:#edf0eb;color:#506053}
+.table{font-size:11px}.table th{background:#f7f8f5;color:#707770;font-size:9px;letter-spacing:.06em}.table th,.table td{padding:10px 9px}.table tr:hover td{background:#fbfcf9}
+.timer{font-size:58px;color:#202521;font-weight:560}.modal{background:rgba(23,28,24,.36);backdrop-filter:blur(3px)}.modalbox{border-radius:16px;box-shadow:0 24px 80px rgba(20,26,21,.18)}
+.print-selector{max-height:350px;overflow:auto;margin-top:10px;padding-right:4px}.helper{font-size:10px;color:var(--muted);line-height:1.5}.danger-zone{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}.danger-zone div{display:grid;gap:2px}.danger-zone strong{font-size:11px}.danger-zone span{font-size:10px;color:var(--muted)}
+input[type=checkbox]{accent-color:#566455}
+.progress{background:#e7eae5}.progress i{background:var(--sage)}
+@media(max-width:1100px){.app{grid-template-columns:82px 1fr}aside{padding:14px 8px}.brand{justify-content:center}.brand>div:last-child,.navlabel,.nav .txt,.foot span{display:none}.nav-scroll{overflow-y:auto}.nav button{justify-content:center;font-size:14px;padding:9px}.content{padding:25px 22px}.command-hero{grid-template-columns:1fr 210px}.c4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.app{grid-template-columns:1fr}aside{position:fixed;top:auto;bottom:0;left:0;right:0;height:66px;padding:7px 8px;display:block;z-index:30;overflow-x:auto;overflow-y:hidden;background:#202521}.brand,.navlabel,.foot{display:none}.nav-scroll{display:flex;overflow:visible;width:max-content}.nav{display:flex}.nav button{min-width:60px;width:auto;height:50px;display:grid;place-items:center;font-size:15px;padding:5px 9px}.nav button.active{background:#f0eee7;color:#222}.nav .txt{display:none}.content{padding:20px 14px 84px}.command-hero{grid-template-columns:1fr}.hero-status{display:none}.c4,.c3,.c2,.formgrid{grid-template-columns:1fr}.metrics-row{grid-template-columns:repeat(2,1fr)!important}.week{grid-template-columns:1fr}.calendar-grid{min-width:690px}.calendar-grid-wrap,#monthCalendar{overflow-x:auto}.toolbar{grid-template-columns:1fr}.topichead{grid-template-columns:auto 1fr auto}.topichead>span:last-child{display:none}.topicbody{padding-left:14px}.danger-zone{align-items:flex-start;flex-direction:column}}
+.header-page{font-size:11px;color:var(--muted);padding-left:10px;border-left:1px solid var(--line)}.material-toolbar{grid-template-columns:minmax(200px,1fr) 210px 170px auto}@media(max-width:900px){.material-toolbar{grid-template-columns:1fr 1fr}.header-page{display:none}}@media(max-width:720px){.material-toolbar{grid-template-columns:1fr}}
+</style>
+
+<style id="v8-soft-professional">
+:root{
+  --bg:#f6f3ef;
+  --surface:#fffdfa;
+  --surface2:#f9f6f2;
+  --sidebar:#f0ebe5;
+  --sidebar2:#ebe4dc;
+  --accent:#a86452;
+  --accentD:#825044;
+  --sage:#849081;
+  --sageSoft:#edf0ea;
+  --blue:#71848d;
+  --blueSoft:#edf2f3;
+  --line:#e2ddd7;
+  --lineStrong:#d4cec7;
+  --text:#3e3a37;
+  --muted:#7d7771;
+  --soft:#f2e8e4;
+  --rose:#a86452;
+  --roseD:#825044;
+}
+aside{background:var(--sidebar)!important;color:var(--text)!important;border-right:1px solid var(--line)!important;box-shadow:none!important}
+.brand{border-bottom:1px solid var(--line)!important}.brandmark{background:#fffaf6!important;color:var(--accent)!important;border:1px solid var(--line)!important}
+.brand h1{color:#4a4440!important}.brand small{color:#8a827b!important}
+.navlabel{color:#9a9189!important}
+.nav button{color:#6f6862!important}
+.nav button:hover{background:rgba(255,255,255,.55)!important;color:#493f3a!important}
+.nav button.active{background:#fffaf6!important;color:#6e493d!important;box-shadow:0 2px 10px rgba(79,63,55,.05)!important}
+.foot{border-top:1px solid var(--line)!important;color:#978f88!important}.foot strong{color:#766c66!important}
+header{background:rgba(246,243,239,.92)!important}
+.btn.primary{background:#76574d!important;border-color:#76574d!important}.btn.primary:hover{background:#62483f!important}
+.hero-status{background:#6f6159!important}
+.mentor-hero:before{background:#b27b68!important}
+.tag{background:#f0ece7!important;color:#6f655f!important}
+.tag.green{background:#eaf0e8!important;color:#586654!important}.tag.gold{background:#f4eddf!important;color:#7c6848!important}
+.session{background:#f0f1ec!important;border-left-color:#899684!important}
+.cal-event{background:#f1eeea!important;color:#665d58!important}
+.energy-btn.active{background:#77655c!important;border-color:#77655c!important}
+@media(max-width:720px){aside{background:#ede6df!important}}
+</style>
+
+<style>
+.exam-bank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.exam-card{border:1px solid var(--line);border-radius:13px;background:#fff;padding:14px;display:grid;gap:10px}
+.exam-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.exam-card h4{font-size:13px;margin:0;color:var(--text)}
+.exam-meta{font-size:10px;color:var(--muted);line-height:1.55}
+.exam-note{font-size:10px;color:#6f6761;background:#f7f3ef;border-radius:9px;padding:8px}
+.exam-actions{display:flex;gap:7px;flex-wrap:wrap}
+.exam-card.recommended{border-color:#d8c2b9;background:#fffdfb}
+.exam-rank{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+@media(max-width:850px){.exam-bank{grid-template-columns:1fr}}
+</style>
+
+<style id="v9-modern-colorful">
+:root{
+  --bg:#f7f7fb;
+  --surface:#ffffff;
+  --surface2:#fbfbfd;
+  --text:#2f2f38;
+  --muted:#7f8190;
+  --line:#e8e8ef;
+  --lineStrong:#dbdce6;
+  --pink:#d989a1;
+  --pinkSoft:#faedf2;
+  --lilac:#8f86c8;
+  --lilacSoft:#f0eef9;
+  --blue:#6f9fbe;
+  --blueSoft:#edf5fa;
+  --sage:#83a78f;
+  --sageSoft:#edf5ef;
+  --peach:#d99672;
+  --peachSoft:#fbf0e8;
+  --accent:#8b83c4;
+  --accentD:#6d65a7;
+  --rose:#d989a1;
+  --roseD:#b86c83;
+  --green:#eaf4ec;
+  --gold:#f7efe3;
+  --soft:#f7f2f6;
+  --shadow:0 10px 35px rgba(74,71,104,.06);
+}
+html,body{background:var(--bg)!important;color:var(--text)!important}
+body{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+.app{grid-template-columns:230px minmax(0,1fr)!important}
+aside{
+  background:rgba(255,255,255,.88)!important;
+  color:var(--text)!important;
+  border-right:1px solid var(--line)!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(18px);
+  padding:18px 12px!important;
+}
+.brand{border-bottom:0!important;padding:5px 8px 15px!important;margin-bottom:5px!important}
+.brandmark{
+  width:38px!important;height:38px!important;border-radius:13px!important;
+  background:linear-gradient(135deg,var(--lilacSoft),var(--pinkSoft))!important;
+  color:var(--accentD)!important;border:1px solid #ece9f7!important;
+  box-shadow:none!important;
+}
+.brand h1{color:#353540!important;font-weight:720!important;letter-spacing:-.03em!important}
+.brand small{color:#9697a4!important}
+.navlabel{color:#b0b1bd!important;font-size:8px!important;letter-spacing:.15em!important;margin:16px 10px 5px!important}
+.nav button{
+  color:#777887!important;border-radius:11px!important;padding:9px 10px!important;
+  min-height:38px!important;font-size:11px!important;transition:.16s ease!important;
+}
+.nav button:hover{background:#f7f7fb!important;color:#454553!important}
+.nav button.active{
+  background:linear-gradient(135deg,#f2f0fa,#f8eef3)!important;
+  color:#615b90!important;
+  box-shadow:none!important;font-weight:680!important;
+}
+.foot{border-top:0!important;color:#aaaab4!important}.foot strong{color:#898a98!important}
+header{
+  height:62px!important;background:rgba(247,247,251,.84)!important;
+  border-bottom:0!important;padding:0 28px!important;backdrop-filter:blur(16px)!important;
+}
+.header-context{background:#fff!important;border:1px solid var(--line)!important;color:#666775!important;border-radius:999px!important;padding:7px 10px!important}
+#setupStatus{background:#fff!important;border:1px solid var(--line)!important}
+.content{max-width:1480px!important;padding:26px 32px 50px!important}
+h2{font-size:31px!important;font-weight:730!important;letter-spacing:-.045em!important;color:#30303a!important}
+h3{letter-spacing:-.02em!important}
+.eyebrow{color:#9a83b4!important;font-size:8px!important;letter-spacing:.15em!important;font-weight:700!important}
+.lead{color:var(--muted)!important;font-size:12px!important}
+.card,.hero,.mentor-hero{
+  background:rgba(255,255,255,.94)!important;border:1px solid var(--line)!important;
+  border-radius:18px!important;box-shadow:var(--shadow)!important;
+}
+.card:hover{border-color:#ddddE8!important}
+.btn{
+  border:1px solid var(--lineStrong)!important;border-radius:11px!important;background:#fff!important;
+  color:#555664!important;padding:8px 12px!important;font-size:10px!important;box-shadow:none!important;
+}
+.btn:hover{background:#fafafd!important;border-color:#cfd0dc!important}
+.btn.primary{
+  background:linear-gradient(135deg,#7970b1,#948ac8)!important;
+  border-color:transparent!important;color:#fff!important;
+}
+.btn.primary:hover{filter:brightness(.97)}
+.btn.ghost{background:rgba(255,255,255,.6)!important}
+.btn.soft{background:var(--blueSoft)!important;color:#53768d!important;border-color:#dcebf4!important}
+.btn.danger{color:#a25f67!important;border-color:#f0dce1!important;background:#fff!important}
+.control{
+  border:1px solid var(--lineStrong)!important;border-radius:11px!important;background:#fff!important;
+  padding:9px 10px!important;font-size:11px!important;color:#454550!important;
+}
+.control:focus{border-color:#aaa3d2!important;box-shadow:0 0 0 3px rgba(143,134,200,.11)!important}
+label.lbl{color:#7b7b88!important}
+.tag{border-radius:999px!important;background:#f4f4f8!important;color:#6e6f7b!important}
+.tag.green{background:var(--sageSoft)!important;color:#5f7c68!important}
+.tag.gold{background:var(--peachSoft)!important;color:#936d55!important}
+.notice{background:#faf8fc!important;border-color:#ebe6f0!important;color:#756d7b!important}
+.empty{background:#fbfbfd!important;border-color:#e7e7ef!important;border-radius:14px!important}
+.tabs{background:#efeff5!important;border-radius:12px!important}.tabs .btn.active{background:#fff!important;color:#665f93!important}
+.item{border-radius:13px!important;background:#fff!important}
+.avail-card{border-radius:15px!important;background:#fcfcfe!important}
+.session{background:#f5f4fb!important;border-left:3px solid var(--lilac)!important;color:#5d5a70!important;border-radius:9px!important}
+.day{border-radius:14px!important}
+.mini-stat{background:#fafafd!important;border-radius:11px!important}
+.mentor-hero:before{background:linear-gradient(var(--lilac),var(--pink))!important}
+.energy-btn.active{background:#8279b9!important;border-color:#8279b9!important}
+.cal-day{border-radius:12px!important}.cal-day.today{outline:2px solid var(--pink)!important}.cal-event{background:#f4f3fa!important;color:#65617d!important}
+.error-tag{background:var(--pinkSoft)!important;color:#956579!important}
+.table th{background:#f8f8fc!important;color:#8a8b97!important}
+.progress{background:#efeff4!important}.progress i{background:linear-gradient(90deg,var(--lilac),var(--pink))!important}
+
+/* New home */
+.home-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:16px}
+.home-top h2{margin:4px 0 5px!important;font-size:34px!important}
+.date-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:10px;color:#7a7b88;box-shadow:var(--shadow)}
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:2fr repeat(2,minmax(140px,.72fr));
+  grid-template-rows:repeat(2,132px);
+  gap:12px;
+}
+.hero-card{
+  border-radius:22px;border:1px solid #e9e7f3;background:
+  radial-gradient(circle at 85% 20%,rgba(217,137,161,.16),transparent 26%),
+  radial-gradient(circle at 72% 80%,rgba(111,159,190,.13),transparent 30%),
+  linear-gradient(135deg,#fff,#faf9fd);
+  box-shadow:var(--shadow);
+}
+.hero-main{grid-row:1/3;padding:26px;display:flex;justify-content:space-between;align-items:center;gap:20px;overflow:hidden;position:relative}
+.hero-main h3{font-size:22px;margin:12px 0 7px;max-width:540px}
+.hero-main-copy{position:relative;z-index:2}
+.focus-orb{
+  width:150px;height:150px;border-radius:50%;flex:none;
+  background:linear-gradient(145deg,#f4eef9,#fbeef3);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 16px 38px rgba(132,113,170,.10);
+}
+.focus-orb span,.focus-orb small{font-size:9px;color:#8b8493}.focus-orb strong{font-size:32px;color:#7067a1;line-height:1.1}
+.pill{display:inline-flex;border-radius:999px;padding:6px 9px;font-size:9px;font-weight:700}
+.soft-pink{background:var(--pinkSoft);color:#a96d80}
+.mini-card{
+  border-radius:18px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;
+  border:1px solid transparent;box-shadow:0 8px 24px rgba(70,69,96,.04)
+}
+.mini-card strong{font-size:27px;letter-spacing:-.04em}.mini-card small,.mini-label{font-size:9px}.mini-label{font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.accent-lilac{background:var(--lilacSoft);border-color:#e6e2f5}.accent-lilac strong{color:#7269a8}.accent-lilac .mini-label{color:#8d84b6}
+.accent-blue{background:var(--blueSoft);border-color:#e0edf4}.accent-blue strong{color:#5f88a1}.accent-blue .mini-label{color:#7297ad}
+.accent-sage{background:var(--sageSoft);border-color:#e1ece3}.accent-sage strong{color:#66836e}.accent-sage .mini-label{color:#7a9580}
+.accent-pink{background:var(--pinkSoft);border-color:#f3dde5}.accent-pink strong{color:#b46f85}.accent-pink .mini-label{color:#bd8093}
+.modern-section{padding:18px!important}
+.text-link{border:0;background:transparent;color:#8075b0;font-size:10px;cursor:pointer}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quick-actions button{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px;display:flex;gap:9px;text-align:left;align-items:center;cursor:pointer}
+.quick-actions button:hover{background:#fafafd}
+.quick-actions strong{display:block;font-size:10px;color:#454550}.quick-actions small{display:block;font-size:9px;color:#9696a2;margin-top:2px}
+.qa-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:12px}
+.qa-icon.lilac{background:var(--lilacSoft);color:#766eaa}.qa-icon.blue{background:var(--blueSoft);color:#6088a0}.qa-icon.sage{background:var(--sageSoft);color:#66846d}.qa-icon.pink{background:var(--pinkSoft);color:#ad7082}
+
+@media(max-width:1100px){
+  .app{grid-template-columns:78px 1fr!important}
+  .dashboard-grid{grid-template-columns:1.6fr 1fr 1fr}
+  .brand>div:last-child,.navlabel,.nav .txt,.foot span{display:none}
+}
+@media(max-width:820px){
+  .dashboard-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .hero-main{grid-column:1/3;grid-row:auto;min-height:210px}
+}
+@media(max-width:720px){
+  .app{grid-template-columns:1fr!important}
+  aside{background:rgba(255,255,255,.95)!important;border-top:1px solid var(--line)!important}
+  .content{padding:18px 14px 84px!important}
+  .home-top{align-items:flex-start}.home-top h2{font-size:29px!important}.date-pill{display:none}
+  .dashboard-grid{grid-template-columns:1fr 1fr}
+  .hero-main{grid-column:1/3;padding:20px}.focus-orb{display:none}
+  .mini-card{min-height:112px}
+  .quick-actions{grid-template-columns:1fr}
+}
+</style>
+
+<style id="v10-topbar-topic">
+body{padding-top:76px!important}
+.app{display:block!important;min-height:100vh!important}
+main{min-width:0!important}
+.topbar-shell{
+  position:fixed;top:0;left:0;right:0;height:76px;z-index:80;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;
+  padding:0 28px;background:rgba(250,250,253,.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(229,229,237,.92);
+}
+.topbar-brand{display:flex;align-items:center;gap:10px;min-width:max-content}
+.topbar-mark{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:11px;color:#6c649f;background:linear-gradient(135deg,#f0eef9,#faedf2);border:1px solid #e8e4f4}
+.topbar-brandtext{display:grid;line-height:1.05}.topbar-brandtext strong{font-size:11px;color:#353540}.topbar-brandtext small{font-size:8px;color:#9c9daa;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.topnav{display:flex;align-items:center;justify-content:center;gap:4px;min-width:0}
+.topnav button,.more-menu button{border:0;background:transparent;cursor:pointer;font:inherit}
+.topnav button{padding:9px 11px;border-radius:10px;color:#747584;font-size:10px;font-weight:620;white-space:nowrap}
+.topnav button:hover{background:#f1f1f6;color:#484855}
+.topnav button.active{background:#fff;color:#6c649f;box-shadow:0 3px 15px rgba(79,74,114,.07)}
+.more-trigger span{font-size:8px;margin-left:3px}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.top-icon-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#777886;cursor:pointer}
+.top-profile{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:12px;padding:6px 9px;cursor:pointer}
+.top-profile>span{width:28px;height:28px;border-radius:9px;background:var(--lilacSoft);color:#7169a4;display:grid;place-items:center;font-size:9px;font-weight:800}
+.top-profile>div{display:grid;text-align:left}.top-profile strong{font-size:9px;color:#4b4b57}.top-profile small{font-size:8px;color:#a0a1ad;margin-top:2px}
+.more-menu{
+  position:fixed;top:68px;right:28px;width:330px;display:none;grid-template-columns:repeat(3,1fr);gap:6px;
+  padding:12px;border:1px solid var(--line);background:rgba(255,255,255,.98);border-radius:16px;box-shadow:0 20px 50px rgba(68,65,91,.12);z-index:100;
+}
+.more-menu.open{display:grid}
+.more-group{display:grid;align-content:start;gap:2px}.more-group>span{font-size:8px;color:#aaaab5;text-transform:uppercase;letter-spacing:.1em;padding:5px 7px}
+.more-menu button{text-align:left;padding:8px;border-radius:9px;font-size:9px;color:#5c5d6a}
+.more-menu button:hover{background:#f6f5fa;color:#655e96}
+.content{padding-top:28px!important}
+header+main{padding-top:0}
+
+.topic-detail-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.topic-detail-actions{display:flex;gap:8px;flex-wrap:wrap}
+.topic-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.topic-kpi{border-radius:17px;padding:16px;display:grid;gap:4px;border:1px solid transparent}
+.topic-kpi span{font-size:8px;text-transform:uppercase;letter-spacing:.08em;font-weight:760}
+.topic-kpi strong{font-size:26px;letter-spacing:-.04em}
+.topic-kpi small{font-size:9px;opacity:.78}
+.topic-kpi.lavender{background:#f1effa;border-color:#e8e4f7;color:#655d95}
+.topic-kpi.mint{background:#edf6f0;border-color:#e1eee5;color:#5e7e67}
+.topic-kpi.blue{background:#edf5fa;border-color:#dfeef5;color:#5a8098}
+.topic-kpi.rose{background:#faedf2;border-color:#f2dfe6;color:#a46679}
+.next-action-card{padding:14px;border-radius:13px;background:linear-gradient(135deg,#faf9fe,#fff);border:1px solid #ece9f5;font-size:11px;line-height:1.55}
+.topic-map-list{display:grid;gap:7px}.topic-map-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:10px}.topic-map-row:last-child{border-bottom:0}.topic-map-row b{font-weight:650;color:#51515c}.topic-map-row span{color:#8e8f9b}
+.topic-mini-list{display:grid;gap:7px}.topic-mini-item{padding:10px;border:1px solid var(--line);border-radius:11px;background:#fff}.topic-mini-item strong{font-size:10px}.topic-mini-item small{display:block;margin-top:3px;color:#92939f;font-size:9px;line-height:1.4}
+.topic-stat-line{display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:10px}.topic-stat-line:last-child{border-bottom:0}.topic-stat-line span{color:#858692}.topic-stat-line strong{font-weight:700;color:#4a4a55}
+.mastery-bar{height:8px;background:#efeff5;border-radius:999px;overflow:hidden;margin-top:8px}.mastery-bar i{display:block;height:100%;background:linear-gradient(90deg,#8f86c8,#d989a1);border-radius:999px}
+.topic-row-click{cursor:pointer}.topic-row-click:hover{background:#fbfaff}
+.topic-link-btn{border:0;background:none;color:#756baa;font-size:9px;cursor:pointer;padding:0}
+
+@media(max-width:980px){
+  .topbar-shell{grid-template-columns:auto 1fr auto;gap:12px;padding:0 16px}
+  .topbar-brandtext{display:none}
+  .topnav{justify-content:flex-start;overflow-x:auto}
+  .topnav button{padding:8px 9px}
+  .top-profile>div{display:none}
+  .more-menu{right:16px}
+  .topic-kpi-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  body{padding-top:68px!important}
+  .topbar-shell{height:68px;padding:0 10px;grid-template-columns:auto 1fr auto}
+  .topbar-mark{width:34px;height:34px}
+  .topnav{gap:1px}
+  .topnav button{font-size:9px;padding:7px 7px}
+  .topnav button:nth-child(4),.topnav button:nth-child(5){display:none}
+  .top-icon-btn{display:none}
+  .top-profile{padding:4px}
+  .top-profile>span{width:28px;height:28px}
+  .more-menu{left:10px;right:10px;top:61px;width:auto;grid-template-columns:1fr 1fr 1fr}
+  .topic-detail-head{display:grid}.topic-detail-actions{order:2}
+  .topic-kpi-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+
+<style id="v11-polish">
+.welcome-stage{display:grid;gap:10px}
+.welcome-main{
+  min-height:250px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);gap:24px;
+  padding:28px;border:1px solid #e8e7f1;border-radius:24px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(circle at 87% 16%,rgba(217,137,161,.16),transparent 24%),
+    radial-gradient(circle at 77% 84%,rgba(111,159,190,.13),transparent 26%),
+    radial-gradient(circle at 60% 20%,rgba(143,134,200,.09),transparent 27%),
+    #fff;
+  box-shadow:0 15px 45px rgba(72,69,102,.055)
+}
+.welcome-copy{align-self:center;max-width:620px;position:relative;z-index:2}
+.welcome-copy h3{font-size:28px;line-height:1.06;letter-spacing:-.045em;margin:13px 0 10px;color:#33333f}
+.welcome-copy p{font-size:12px;line-height:1.7;color:#7c7d8b;max-width:560px}
+.welcome-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.welcome-visual{position:relative;min-height:190px;align-self:center}
+.orbit-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:126px;height:126px;border-radius:38px;background:rgba(255,255,255,.78);border:1px solid rgba(224,221,238,.9);box-shadow:0 22px 48px rgba(104,92,144,.10);display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.orbit-center span{font-size:9px;color:#9a91b4;letter-spacing:.16em}.orbit-center strong{font-size:37px;line-height:.98;color:#7068a5}.orbit-center small{font-size:8px;color:#9a9aa5;margin-top:5px;text-transform:uppercase;letter-spacing:.08em}
+.orbit-card{position:absolute;width:92px;height:72px;border-radius:19px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(85,77,117,.06)}
+.orbit-card span{font-size:21px;font-weight:760}.orbit-card small{font-size:8px;margin-top:3px}
+.orbit-a{left:3%;top:10%;background:#f1effa;color:#746ba8;transform:rotate(-5deg)}
+.orbit-b{right:1%;bottom:8%;background:#faedf2;color:#ab6c81;transform:rotate(4deg)}
+.plan-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e9e9f0;border:1px solid #e9e9f0;border-radius:15px;overflow:hidden}
+.plan-strip>div{background:#fff;padding:12px 14px;display:grid;gap:4px}.plan-strip span{font-size:8px;text-transform:uppercase;letter-spacing:.09em;color:#a1a2ae}.plan-strip strong{font-size:10px;color:#53535f;font-weight:650}
+.compact-dashboard{grid-template-rows:repeat(2,120px)}
+.flow-steps{display:grid;gap:0}.flow-steps>div{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.flow-steps>div:last-child{border-bottom:0}.flow-steps>div>span{width:27px;height:27px;border-radius:9px;display:grid;place-items:center;background:#f1effa;color:#756daa;font-size:8px;font-weight:800}.flow-steps strong{display:block;font-size:10px;color:#4d4d58}.flow-steps small{display:block;font-size:9px;color:#92939f;margin-top:2px;line-height:1.45}
+.material-toolbar{position:sticky;bottom:8px;background:rgba(247,247,251,.88);backdrop-filter:blur(14px);padding:8px;border-radius:14px;border:1px solid rgba(230,230,238,.9);z-index:8}
+#matSubject:empty,#matTopic:empty{background:#fff4f6}
+@media(max-width:900px){.welcome-main{grid-template-columns:1fr minmax(220px,.55fr)}.plan-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.welcome-main{grid-template-columns:1fr;min-height:auto;padding:20px}.welcome-visual{display:none}.welcome-copy h3{font-size:24px}.plan-strip{grid-template-columns:1fr 1fr}.plan-strip>div{padding:10px}.compact-dashboard{grid-template-rows:auto}.mentor-home-card{grid-column:1/3}}
+.material-link-help{grid-column:1/-1;display:flex;gap:7px;align-items:flex-start;margin-top:-4px;color:#9697a4}.material-link-help span{color:#a28abb}.material-link-help small{font-size:9px;line-height:1.45}
+</style>
+</head>
+<body>
+<div class="app">
+
+<main>
+
+<div class="topbar-shell">
+  <div class="topbar-brand">
+    <div class="topbar-mark">T8</div>
+    <div class="topbar-brandtext"><strong>TRT-8 Study Hub</strong><small>Arquitetura</small></div>
+  </div>
+
+  <nav class="topnav" aria-label="Navegação principal">
+    <button class="active" data-page="home">Início</button>
+    <button data-page="mentorship">Mentoria</button>
+    <button data-page="today">Hoje</button>
+    <button data-page="plan">Cronograma</button>
+    <button data-page="edital">Edital</button>
+    <button class="more-trigger" type="button" onclick="toggleMoreMenu(event)">Mais <span>⌄</span></button>
+  </nav>
+
+  <div class="topbar-actions">
+    <button class="top-icon-btn" title="Calendário" onclick="go('calendar')">◫</button>
+    <button class="top-profile" onclick="toggleMoreMenu(event)">
+      <span>FT</span><div><strong>Fernanda</strong><small id="topPlanStatus">15h/semana</small></div>
+    </button>
+  </div>
+
+  <div class="more-menu" id="moreMenu">
+    <div class="more-group">
+      <span>Estudo</span>
+      <button data-page="focus">Modo foco</button>
+      <button data-page="materials">Materiais</button>
+      <button data-page="questions">Questões</button>
+      <button data-page="reviews">Revisões</button>
+    </div>
+    <div class="more-group">
+      <span>Prática</span>
+      <button data-page="errors">Caderno de erros</button>
+      <button data-page="simulations">Simulados</button>
+      <button data-page="discursive">Discursiva</button>
+    </div>
+    <div class="more-group">
+      <span>Análise</span>
+      <button data-page="performance">Desempenho</button>
+      <button data-page="calendar">Calendário</button>
+      <button data-page="setup">Configurar estudo</button>
+      <button data-page="export">Backup / impressão</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+
+
+<section class="page active" id="home">
+<div class="home-top">
+  <div>
+    <div class="eyebrow">PREPARAÇÃO TRT-8 • ARQUITETURA</div>
+    <h2 id="greetingTitle">Olá, Fernanda</h2>
+    <p class="lead" id="greetingSubtitle">Seu plano está pronto para continuar de onde você parou.</p>
+  </div>
+  <div class="date-pill" id="homeDate">—</div>
+</div>
+
+<div class="welcome-stage">
+  <div class="welcome-main">
+    <div class="welcome-copy">
+      <span class="pill soft-pink">Mentoria personalizada</span>
+      <h3>Seu estudo, organizado como um sistema.</h3>
+      <p>A plataforma cruza seu cronograma, materiais, revisões, questões e desempenho para indicar o próximo passo sem criar progresso fictício.</p>
+      <div class="welcome-actions">
+        <button class="btn primary" onclick="go('mentorship')">Ver orientação de hoje</button>
+        <button class="btn" onclick="go('plan')">Abrir cronograma</button>
+      </div>
+    </div>
+    <div class="welcome-visual">
+      <div class="orbit-card orbit-a"><span>15h</span><small>semanais</small></div>
+      <div class="orbit-card orbit-b"><span>54</span><small>blocos do edital</small></div>
+      <div class="orbit-center"><span>TRT</span><strong>08</strong><small>Arquitetura</small></div>
+    </div>
+  </div>
+
+  <div class="plan-strip">
+    <div><span>Período atual</span><strong>01 out → 30 nov</strong></div>
+    <div><span>Ritmo semanal</span><strong>6 dias • sexta livre</strong></div>
+    <div><span>Estratégia</span><strong>teoria + questões + revisão</strong></div>
+    <div><span>Dados</span><strong>somente registros reais</strong></div>
+  </div>
+</div>
+
+<div class="dashboard-grid compact-dashboard" style="margin-top:14px">
+  <div class="hero-card hero-main mentor-home-card">
+    <div class="hero-main-copy">
+      <span class="pill soft-pink">Prioridade do momento</span>
+      <h3 id="homeMentorTitle">Organizando sua prioridade...</h3>
+      <p id="homeMentorWhy" class="muted">O sistema cruza cronograma, revisões e desempenho.</p>
+      <div class="row" style="margin-top:16px">
+        <button class="btn primary" onclick="go('mentorship')">Entender recomendação</button>
+        <button class="btn ghost" onclick="go('today')">Estudar agora</button>
+      </div>
+    </div>
+    <div class="focus-orb"><span>Plano</span><strong>15h</strong><small>por semana</small></div>
+  </div>
+
+  <div class="mini-card accent-lilac"><span class="mini-label">Tempo líquido</span><strong id="mHours">0h</strong><small>estudado</small></div>
+  <div class="mini-card accent-blue"><span class="mini-label">Questões</span><strong id="mQuestions">0</strong><small>registradas</small></div>
+  <div class="mini-card accent-sage"><span class="mini-label">Acerto</span><strong id="mAccuracy">—</strong><small>desempenho real</small></div>
+  <div class="mini-card accent-pink"><span class="mini-label">Cobertura</span><strong id="mCoverage">0%</strong><small>edital concluído</small></div>
+</div>
+
+<div class="grid c2" style="margin-top:16px">
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">AGORA</span><h3>Hoje</h3></div><button class="text-link" onclick="go('today')">abrir →</button></div>
+    <div id="homeToday" class="empty"><strong>Nenhuma sessão planejada.</strong>Configure o estudo e gere o cronograma.</div>
+  </div>
+
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">CONTINUAR</span><h3>Atalhos</h3></div></div>
+    <div class="quick-actions">
+      <button onclick="go('materials')"><span class="qa-icon lilac">▱</span><div><strong>Materiais</strong><small>PDFs, normas e anotações</small></div></button>
+      <button onclick="go('questions')"><span class="qa-icon blue">✓</span><div><strong>Questões</strong><small>registrar desempenho</small></div></button>
+      <button onclick="go('reviews')"><span class="qa-icon sage">↻</span><div><strong>Revisões</strong><small>acompanhar o ciclo</small></div></button>
+      <button onclick="go('simulations')"><span class="qa-icon pink">◌</span><div><strong>Simulados</strong><small>provas anteriores</small></div></button>
+    </div>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:16px">
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">CONTINUIDADE</span><h3>Onde parei</h3></div></div>
+    <div id="whereStopped"></div>
+  </div>
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">COMO FUNCIONA</span><h3>Seu ciclo de mentoria</h3></div></div>
+    <div class="flow-steps">
+      <div><span>01</span><div><strong>Planejar</strong><small>o sistema distribui dentro da sua disponibilidade.</small></div></div>
+      <div><span>02</span><div><strong>Executar</strong><small>sessões, materiais e questões alimentam a mesma ficha.</small></div></div>
+      <div><span>03</span><div><strong>Diagnosticar</strong><small>erros e desempenho alteram prioridades reais.</small></div></div>
+      <div><span>04</span><div><strong>Replanejar</strong><small>pendências são redistribuídas sem sobrecarga.</small></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+  <div id="whereStopped"></div>
+</div>
+
+
+
+
+<section class="page" id="calendar">
+<div class="eyebrow">Visão mensal</div><h2>Calendário</h2>
+<p class="lead">Sessões, revisões, simulados e discursivas em uma única visão.</p>
+<div class="row" style="margin:12px 0"><button class="btn" onclick="moveMonth(-1)">←</button><span class="chip" id="monthLabel">—</span><button class="btn" onclick="moveMonth(1)">→</button><button class="btn soft" onclick="calendarToToday()">Hoje</button><button class="btn" onclick="exportICS()">Exportar para Apple Calendar (.ics)</button></div>
+<div id="monthCalendar" class="calendar-grid-wrap"></div>
+</section>
+
+<section class="page" id="setup">
+<div class="eyebrow">Base do cronograma</div><h2>Configurar estudo</h2><p class="lead">O cronograma será calculado a partir daqui. Nada é presumido.</p>
+<div class="tabs"><button class="btn active" onclick="setupTab('availability',this)">Disponibilidade</button><button class="btn" onclick="setupTab('method',this)">Método</button><button class="btn" onclick="setupTab('courses',this)">Estratégia</button><button class="btn" onclick="setupTab('subjects',this)">Matérias do ciclo</button></div>
+
+<div class="setupPane" id="availability">
+<div class="card"><h3>Disponibilidade semanal atual</h3><p class="lead">Informe quantas horas realmente consegue estudar em cada dia. Pode usar horários diferentes por faixa.</p><div id="availabilityRows" style="margin-top:14px"></div><div class="row" style="margin-top:12px"><button class="btn primary" onclick="saveAvailability()">Salvar disponibilidade</button><span class="muted" id="availTotal"></span></div></div>
+</div>
+
+<div class="setupPane" id="method" style="display:none">
+<div class="card"><h3>Método de estudo</h3><div class="formgrid">
+<label class="lbl">Duração padrão da sessão<select class="control" id="sessionLength"><option value="30">30 min</option><option value="45">45 min</option><option value="60" selected>60 min</option><option value="75">75 min</option><option value="90">90 min</option></select></label>
+<label class="lbl">Máximo de matérias por dia<select class="control" id="maxSubjects"><option>1</option><option selected>2</option><option>3</option></select></label>
+<label class="lbl">Estudo de teoria (%)<input class="control" id="theoryPct" type="number" min="0" max="100" value="70"></label>
+<label class="lbl">Questões / prática (%)<input class="control" id="questionsPct" type="number" min="0" max="100" value="30"></label>
+<label class="lbl">Fonte principal<select class="control" id="mainSource"><option>PDF Simplificado</option><option>PDF Regular</option><option>Videoaula</option><option>Material próprio</option></select></label>
+<label class="lbl">Revisão automática<select class="control" id="reviewScheme"><option value="1-7-30">1 / 7 / 30 dias</option><option value="1-7-21">1 / 7 / 21 dias</option><option value="manual">Manual</option></select></label>
+<label class="lbl">Reorganização de pendências<select class="control" id="replanMode"><option value="balanced">Equilibrada</option><option value="conservative">Conservadora</option><option value="priority">Prioridade máxima</option></select></label>
+<label class="lbl">Período do plano<input class="control" id="planStart" type="date" value="2026-10-01"></label>
+<label class="lbl">Até<input class="control" id="planEnd" type="date" value="2026-11-30"></label>
+</div><label class="item" style="margin-top:10px"><input type="checkbox" id="autoReplan" checked><main><strong>Reorganizar automaticamente atrasos</strong><div class="muted">Pendências são redistribuídas sem usar dias com disponibilidade zero, como sexta-feira.</div></main></label><div class="row" style="margin-top:12px"><button class="btn primary" onclick="saveMethod()">Salvar método</button></div></div>
+</div>
+
+<div class="setupPane" id="courses" style="display:none">
+<div class="card"><h3>Cursos / pacotes que você possui</h3><div class="stack">
+<div class="course"><div class="courseicon">E</div><main><strong>SEFA-PA • Estratégia Concursos</strong><div class="muted">Cadastrado como fonte disponível. Nenhuma aula ou progresso foi inventado.</div></main><span class="tag green">possui</span></div>
+<div class="course"><div class="courseicon">E</div><main><strong>CDP-PA • Estratégia Concursos</strong><div class="muted">Cadastrado como fonte disponível. Pode ser vinculado a matérias em comum.</div></main><span class="tag green">possui</span></div>
+<div class="course"><div class="courseicon">T8</div><main><strong>TRT-8 Arquitetura</strong><div class="muted">Ainda sem curso específico vinculado.</div></main><span class="tag gray">não vinculado</span></div>
+</div><div class="notice" style="margin-top:12px">O sistema não acessa automaticamente sua Área do Aluno do Estratégia. Você poderá cadastrar aula, PDF, Passo ou Trilha conforme for usando.</div></div>
+</div>
+
+<div class="setupPane" id="subjects" style="display:none">
+<div class="card"><h3>Matérias que entram no ciclo agora</h3><p class="lead">Marque somente o que deseja estudar no pré-edital. Depois poderemos criar prioridades.</p><div id="subjectSelector" class="grid c2" style="margin-top:12px"></div><div class="row" style="margin-top:12px"><button class="btn primary" onclick="saveSubjects()">Salvar matérias</button><button class="btn" onclick="selectRecommended()">Selecionar base inicial</button></div></div>
+</div>
+
+<div class="card" style="margin-top:14px">
+<h3>Backup e transferência</h3>
+<p class="lead">Use para levar seus dados do iPad para o PC ou manter uma cópia de segurança.</p>
+<div id="backupStatus" class="notice" style="margin:10px 0">Nenhum backup exportado neste dispositivo.</div>
+<div class="row">
+<button class="btn primary" onclick="exportFullBackup()">Exportar backup completo (.json)</button>
+<label class="btn">Importar backup<input type="file" accept=".json" style="display:none" onchange="importFullBackupFile(this)"></label>
+</div>
+</div>
+</section>
+
+<section class="page" id="plan">
+<div class="eyebrow">Cronograma dinâmico</div><h2>Cronograma</h2><p class="lead">Datas reais, atualização automática e redistribuição de pendências conforme sua disponibilidade.</p>
+<div class="tabs"><button class="btn active" onclick="planTab('week',this)">Semana</button><button class="btn" onclick="planTab('cycle',this)">Ciclo</button><button class="btn" onclick="go('setup')">Editar configuração</button></div>
+<div class="row" style="margin:10px 0"><button class="btn" onclick="moveWeek(-1)">← Semana anterior</button><span class="chip" id="weekLabel">—</span><button class="btn" onclick="moveWeek(1)">Próxima semana →</button><button class="btn soft" onclick="jumpToday()">Ir para hoje</button></div>
+<div id="planWarning" class="notice" style="margin:12px 0">Complete a configuração para gerar o cronograma.</div>
+<div class="planPane" id="week"><div id="weekView" class="empty"><strong>Cronograma ainda não gerado.</strong>Configure seus horários e matérias primeiro.</div></div>
+<div class="planPane" id="cycle" style="display:none"><div id="cycleView" class="empty"><strong>Ciclo ainda não definido.</strong>Ele será formado pelas matérias selecionadas.</div></div>
+<div class="row" style="margin-top:14px"><button class="btn primary" onclick="generateSchedule()">Gerar / recalcular cronograma</button><button class="btn soft" onclick="replanOverdue(true)">Reorganizar pendências agora</button><button class="btn danger" onclick="clearSchedule()">Limpar cronograma</button></div>
+</section>
+
+
+<section class="page" id="mentorship">
+<div class="eyebrow">Orientação personalizada</div><h2>Mentoria</h2>
+<p class="lead">O sistema cruza cronograma, questões, revisões, materiais e histórico para sugerir a próxima ação.</p>
+
+<div class="mentor-grid" style="margin-top:14px">
+  <div class="mentor-hero">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div><div class="eyebrow">Prioridade de hoje</div><h3 id="mentorTodayTitle" style="margin:4px 0 6px">—</h3><div class="muted" id="mentorTodayWhy">Ainda sem dados suficientes.</div></div>
+      <span class="tag" id="mentorTodayTag">mentor</span>
+    </div>
+    <div id="mentorTodayAction" class="topic-actions" style="margin-top:12px"></div>
+  </div>
+
+  <div class="card">
+    <h3>Check-in</h3>
+    <div class="muted">Como está sua energia hoje?</div>
+    <div class="energy-row" style="margin-top:9px">
+      <button class="energy-btn" onclick="setEnergy('Baixa',this)">Baixa</button>
+      <button class="energy-btn" onclick="setEnergy('Normal',this)">Normal</button>
+      <button class="energy-btn" onclick="setEnergy('Alta',this)">Alta</button>
+    </div>
+    <label class="lbl" style="margin-top:10px">Tempo que você realmente tem hoje
+      <select class="control" id="quickTime" onchange="renderMentorship()">
+        <option value="">Usar cronograma</option>
+        <option value="30">30 min</option>
+        <option value="60">1h</option>
+        <option value="90">1h30</option>
+        <option value="120">2h</option>
+        <option value="180">3h</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card"><h3>Alertas do mentor</h3><div id="mentorAlerts"></div></div>
+  <div class="card"><h3>Semana atual</h3><div id="mentorWeek"></div></div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card"><h3>Assuntos que pedem atenção</h3><div id="mentorWeak"></div></div>
+  <div class="card"><h3>Fechamento semanal</h3><div id="weeklyClose"></div><div class="row" style="margin-top:10px"><button class="btn" onclick="exportWeeklySummary()">Exportar resumo da semana</button></div></div>
+</div>
+</section>
+
+<section class="page" id="today"><div class="eyebrow">Execução</div><h2>Hoje</h2><p class="lead" id="todayDateLabel">—</p><div id="todayList" class="empty" style="margin-top:14px"><strong>Nada programado.</strong>Gere o cronograma primeiro.</div></section>
+
+<section class="page" id="edital"><div class="eyebrow">Registro-base</div><h2>Meu edital</h2><p class="lead">54 blocos. Progresso individual começa em zero e só muda quando você registra estudo.</p>
+<div class="toolbar"><input class="control" id="editalSearch" placeholder="Buscar assunto, lei ou norma..." oninput="renderEdital()"><select class="control" id="groupFilter" onchange="renderEdital()"><option value="">Todas as categorias</option></select><select class="control" id="topicStateFilter" onchange="renderEdital()"><option value="">Todos os status</option><option>Não iniciado</option><option>Estudando</option><option>Revisar</option><option>Concluído</option></select><button class="btn soft" onclick="go('export')">Imprimir</button></div><div id="editalList"></div></section>
+
+<section class="page" id="focus">
+<div class="eyebrow">Sessão interligada</div><h2>Modo foco</h2><p class="lead">O assunto escolhido carrega automaticamente materiais, questões, histórico e revisões relacionados.</p>
+<div class="card" style="max-width:860px;margin:15px auto">
+  <div class="formgrid">
+    <label class="lbl">Matéria<select class="control" id="focusSubject" onchange="populateFocusTopicsSafe()"></select></label>
+    <label class="lbl">Assunto<select class="control" id="focusTopic" onchange="renderFocusContext()"></select></label>
+    <label class="lbl">Tipo<select class="control" id="focusType"><option>Teoria</option><option>Questões</option><option>Revisão</option><option>Lei / norma</option><option>Discursiva</option></select></label>
+    <label class="lbl">Material / aula usada<input class="control" id="focusMaterial" placeholder="Escolha abaixo ou escreva manualmente"></label>
+  </div>
+  <div id="focusContext" class="linked-panel"></div>
+  <div class="timer" id="timer">00:00:00</div>
+  <div class="row" style="justify-content:center"><button class="btn primary" id="timerBtn" onclick="toggleTimer()">Iniciar</button><button class="btn" onclick="finishSession()">Concluir sessão</button><button class="btn danger" onclick="resetTimer()">Zerar</button></div>
+</div>
+</section>
+
+<section class="page" id="questions"><div class="eyebrow">Registro real</div><h2>Questões</h2><p class="lead">Nenhuma questão aparece até você registrar.</p><div class="grid c3" style="margin-top:14px"><div class="card metric"><strong id="qTotal">0</strong><small>questões</small></div><div class="card metric"><strong id="qRight">0</strong><small>acertos</small></div><div class="card metric"><strong id="qRate">—</strong><small>taxa de acerto</small></div></div><div class="card" style="margin-top:14px"><h3>Registrar bloco de questões</h3><div class="formgrid"><label class="lbl">Matéria<select class="control" id="qSubject" onchange="populateQuestionTopicsSafe()"></select></label><label class="lbl">Assunto<select class="control" id="qTopic"></select></label><label class="lbl">Quantidade<input class="control" id="qCount" type="number" min="1"></label><label class="lbl">Acertos<input class="control" id="qCorrect" type="number" min="0"></label><label class="lbl">Banca<input class="control" id="qBoard" value="FCC"></label><label class="lbl">Data<input class="control" id="qDate" type="date"></label></div><button class="btn primary" style="margin-top:11px" onclick="addQuestions()">Salvar registro</button></div><div id="questionHistory" style="margin-top:14px"></div></section>
+
+
+<section class="page" id="errors">
+<div class="eyebrow">Aprendizado pelos erros</div><h2>Caderno de erros</h2>
+<p class="lead">Registre por que errou. O sistema usa isso para apontar padrões e assuntos frágeis.</p>
+<div class="card" style="margin-top:14px">
+  <div class="formgrid">
+    <label class="lbl">Matéria<select class="control" id="errSubject" onchange="populateErrorTopicsSafe()"></select></label>
+    <label class="lbl">Assunto<select class="control" id="errTopic"></select></label>
+    <label class="lbl">Tipo de erro<select class="control" id="errType"><option>Não sabia</option><option>Confundi conceito</option><option>Falta de atenção</option><option>Interpretação</option><option>Decorei errado</option><option>Outro</option></select></label>
+    <label class="lbl">Origem<input class="control" id="errSource" placeholder="Ex.: FCC / simulado / PDF"></label>
+  </div>
+  <label class="lbl" style="margin-top:10px">Regra correta / aprendizado<textarea class="control" id="errNote" style="min-height:90px"></textarea></label>
+  <button class="btn primary" style="margin-top:10px" onclick="addError()">Salvar erro</button>
+</div>
+<div id="errorStats" style="margin-top:14px"></div>
+<div id="errorList" style="margin-top:14px"></div>
+</section>
+
+<section class="page" id="reviews"><div class="eyebrow">Revisão</div><h2>Revisões</h2><p class="lead">A fila nasce das sessões concluídas, conforme o esquema configurado.</p><div id="reviewList" class="empty" style="margin-top:14px"><strong>Nenhuma revisão programada.</strong>Conclua uma sessão de estudo para começar.</div></section>
+
+
+
+<section class="page" id="simulations">
+<div class="eyebrow">Banco de provas + histórico</div><h2>Provas e simulados</h2>
+<p class="lead">Use provas reais como treino cronometrado. Depois registre seu resultado para alimentar o desempenho e o caderno de erros.</p>
+
+<div class="card section-card" style="margin-top:14px">
+  <div class="section-title"><div><span class="eyebrow">Biblioteca inicial</span><h3>Provas recomendadas</h3></div><span class="tag">links online</span></div>
+  <div id="examBank" class="exam-bank"></div>
+  <div class="notice" style="margin-top:12px">Os PDFs não ficam embutidos no HTML: os botões abrem a fonte online para baixar ou resolver. Depois você pode cadastrar o arquivo baixado na Central de Materiais.</div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card section-card">
+    <div class="section-title"><div><span class="eyebrow">Resultado</span><h3>Registrar simulado realizado</h3></div></div>
+    <div class="formgrid">
+      <label class="lbl">Nome<input class="control" id="simName" placeholder="Ex.: TRT-15/2025 • FCC"></label>
+      <label class="lbl">Data<input class="control" id="simDate" type="date"></label>
+      <label class="lbl">Questões<input class="control" id="simCount" type="number" min="1"></label>
+      <label class="lbl">Acertos<input class="control" id="simCorrect" type="number" min="0"></label>
+      <label class="lbl">Tempo (min)<input class="control" id="simTime" type="number" min="0"></label>
+      <label class="lbl">Banca<input class="control" id="simBoard" value="FCC"></label>
+    </div>
+    <label class="lbl" style="margin-top:10px">Desempenho por matéria (opcional)
+<textarea class="control" id="simBreakdown" style="min-height:80px" placeholder="Ex.: Português 8/10; Administrativo 6/10; Arquitetura 28/40"></textarea></label>
+<textarea class="control" id="simNotes" style="margin-top:10px;min-height:95px" placeholder="Assuntos difíceis, estratégia de prova, erros que precisam ir para o caderno..."></textarea>
+    <button class="btn primary" style="margin-top:10px" onclick="addSimulation()">Salvar resultado</button>
+  </div>
+
+  <div class="card section-card">
+    <div class="section-title"><div><span class="eyebrow">Como usar</span><h3>Ritual de simulado</h3></div></div>
+    <div class="decision-list">
+      <div><b>01</b><span>Abra ou baixe a prova e faça sem consulta, com cronômetro.</span></div>
+      <div><b>02</b><span>Corrija com o gabarito e registre acertos, tempo e observações.</span></div>
+      <div><b>03</b><span>Leve os erros importantes para o Caderno de Erros.</span></div>
+      <div><b>04</b><span>O desempenho passa a compor sua mentoria e revisão.</span></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:14px">
+  <div class="section-title"><div><span class="eyebrow">Histórico</span><h3>Simulados realizados</h3></div></div>
+  <div id="simulationList"></div>
+</div>
+</section>
+
+
+<section class="page" id="discursive"><div class="eyebrow">Treino técnico</div><h2>Discursiva</h2><p class="lead">Registre somente os treinos que realmente fizer.</p><div class="card" style="margin-top:14px"><div class="formgrid"><label class="lbl">Matéria<select class="control" id="dSubject" onchange="populateDiscursiveTopicsSafe()"></select></label><label class="lbl">Assunto<select class="control" id="dTopic"></select></label><label class="lbl">Tema<input class="control" id="dTheme"></label><label class="lbl">Tempo (min)<input class="control" id="dTime" type="number"></label><label class="lbl">Linhas<input class="control" id="dLines" type="number"></label><label class="lbl">Nota (opcional)<input class="control" id="dScore" type="number" step=".1"></label></div><textarea class="control" id="dNotes" style="margin-top:10px;min-height:100px" placeholder="Observações, pontos fracos, correções..."></textarea><button class="btn primary" style="margin-top:10px" onclick="addDiscursive()">Salvar treino</button></div><div id="discursiveHistory" style="margin-top:14px"></div></section>
+
+<section class="page" id="materials">
+<div class="eyebrow">Biblioteca local</div><h2>Central de materiais</h2>
+<p class="lead">Organize PDFs, normas, leis, videoaulas e resumos próprios e vincule cada item ao seu edital.</p>
+
+<div class="grid c4" style="margin-top:14px">
+  <div class="card metric"><strong id="matTotal">0</strong><small>materiais cadastrados</small></div>
+  <div class="card metric"><strong id="matPdf">0</strong><small>PDFs</small></div>
+  <div class="card metric"><strong id="matStudying">0</strong><small>em estudo</small></div>
+  <div class="card metric"><strong id="matReviewed">0</strong><small>concluídos</small></div>
+</div>
+
+<div class="card" style="margin-top:14px">
+  <h3>Adicionar material</h3>
+  <div class="formgrid">
+    <label class="lbl">Curso / origem
+      <select class="control" id="matCourse">
+        <option>SEFA-PA • Estratégia</option>
+        <option>CDP-PA • Estratégia</option>
+        <option>TRT-8 • material próprio</option>
+        <option>Norma / legislação</option>
+        <option>Outro</option>
+      </select>
+    </label>
+    <label class="lbl">Categoria
+      <select class="control" id="matType">
+        <option>PDF Simplificado</option>
+        <option>PDF Regular</option>
+        <option>PDF com marcações</option>
+        <option>Videoaula</option>
+        <option>Passo Estratégico</option>
+        <option>Trilha Estratégica</option>
+        <option>Lei / norma</option>
+        <option>Resumo próprio</option>
+        <option>Mapa mental</option>
+        <option>Lista de questões</option>
+        <option>Outro</option>
+      </select>
+    </label>
+    <label class="lbl">Matéria / grupo
+      <select class="control" id="matSubject" onchange="populateMaterialTopicsSafe()"></select>
+    </label>
+    <label class="lbl">Assunto do edital
+      <select class="control" id="matTopic"></select>
+    </label>
+    <div class="material-link-help"><span>↳</span><small>Matéria e assunto vêm diretamente do edital verticalizado. Ao escolher a matéria, os assuntos são filtrados automaticamente.</small></div>
+    <label class="lbl">Nome do material
+      <input class="control" id="matName" placeholder="Ex.: Aula 03 — Atos administrativos">
+    </label>
+    <label class="lbl">Status
+      <select class="control" id="matStatus">
+        <option>Não iniciado</option>
+        <option>Em estudo</option>
+        <option>Revisar</option>
+        <option>Concluído</option>
+      </select>
+    </label>
+    <label class="lbl">Página atual<input class="control" id="matCurrentPage" type="number" min="0" value="0"></label>
+    <label class="lbl">Total de páginas<input class="control" id="matTotalPages" type="number" min="0" value="0"></label>
+  </div>
+
+  <label class="lbl" style="margin-top:10px">Arquivo local (opcional)
+    <input class="control" id="matFile" type="file" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg">
+  </label>
+  <div class="notice" style="margin-top:8px">
+    O arquivo será armazenado localmente no navegador quando possível. Se o navegador bloquear isso em páginas locais, o cadastro continua salvo normalmente.
+  </div>
+
+  <label class="lbl" style="margin-top:10px">Anotações / resumo manual
+    <textarea class="control" id="matNotes" style="min-height:110px" placeholder="Resumo, páginas importantes, observações, pontos de revisão..."></textarea>
+  </label>
+
+  <div class="row" style="margin-top:10px">
+    <button class="btn primary" onclick="addMaterial()">Adicionar à central</button>
+    <button class="btn" onclick="clearMaterialForm()">Limpar</button>
+  </div>
+</div>
+
+<div class="toolbar material-toolbar" style="margin-top:14px">
+  <input class="control" id="matSearch" placeholder="Buscar material, matéria, assunto..." oninput="renderMaterials()">
+  <select class="control" id="matFilterCourse" onchange="renderMaterials()">
+    <option value="">Todos os cursos</option>
+    <option>SEFA-PA • Estratégia</option>
+    <option>CDP-PA • Estratégia</option>
+    <option>TRT-8 • material próprio</option>
+    <option>Norma / legislação</option>
+    <option>Outro</option>
+  </select>
+  <select class="control" id="matFilterStatus" onchange="renderMaterials()">
+    <option value="">Todos os status</option>
+    <option>Não iniciado</option>
+    <option>Em estudo</option>
+    <option>Revisar</option>
+    <option>Concluído</option>
+  </select>
+  <button class="btn" onclick="exportMaterialIndex()">Exportar índice</button>
+</div>
+
+<div id="materialHistory" style="margin-top:14px"></div>
+</section>
+
+
+<section class="page" id="topicDetail">
+<div class="topic-detail-head">
+  <div>
+    <div class="eyebrow" id="tdGroup">Assunto</div>
+    <h2 id="tdTitle">Ficha do assunto</h2>
+    <p class="lead" id="tdSubtitle">Visão integrada de estudo, materiais, desempenho e próximas ações.</p>
+  </div>
+  <div class="topic-detail-actions">
+    <button class="btn" onclick="go('edital')">← Voltar ao edital</button>
+    <button class="btn primary" id="tdStudyBtn">Estudar agora</button>
+  </div>
+</div>
+
+<div class="topic-kpi-grid">
+  <div class="topic-kpi lavender"><span>Cobertura</span><strong id="tdCoverage">0%</strong><small>conteúdo percorrido</small></div>
+  <div class="topic-kpi mint"><span>Domínio</span><strong id="tdMastery">0%</strong><small>estimativa pelos dados reais</small></div>
+  <div class="topic-kpi blue"><span>Questões</span><strong id="tdQuestions">0</strong><small id="tdAccuracy">sem dados</small></div>
+  <div class="topic-kpi rose"><span>Tempo líquido</span><strong id="tdTime">0h</strong><small id="tdLastContact">sem contato</small></div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Mentoria</span><h3>Próxima ação sugerida</h3></div><span class="tag" id="tdPriority">—</span></div>
+    <div class="next-action-card" id="tdNextAction">Ainda sem dados suficientes.</div>
+    <div class="topic-actions" style="margin-top:10px">
+      <button class="btn primary" id="tdActionStudy">Iniciar sessão</button>
+      <button class="btn" id="tdActionQuestions">Registrar questões</button>
+      <button class="btn" id="tdActionMaterial">Abrir materiais</button>
+    </div>
+  </div>
+
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Status</span><h3>Mapa do assunto</h3></div></div>
+    <div class="topic-map-list" id="tdMap"></div>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Materiais</span><h3>Biblioteca vinculada</h3></div><button class="text-link" id="tdAddMaterial">adicionar →</button></div>
+    <div id="tdMaterials"></div>
+  </div>
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Histórico</span><h3>Sessões recentes</h3></div></div>
+    <div id="tdSessions"></div>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:14px">
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Desempenho</span><h3>Questões e erros</h3></div></div>
+    <div id="tdPerformance"></div>
+  </div>
+  <div class="card modern-section">
+    <div class="section-title"><div><span class="eyebrow">Ciclo</span><h3>Revisões e prática</h3></div></div>
+    <div id="tdReviews"></div>
+  </div>
+</div>
+</section>
+
+<section class="page" id="performance"><div class="eyebrow">Somente dados reais</div><h2>Desempenho</h2><p class="lead">Sem notas fictícias. Os indicadores aparecem conforme você usa o sistema.</p><div class="grid c4" style="margin-top:14px"><div class="card metric"><strong id="pHours">0h</strong><small>tempo líquido</small></div><div class="card metric"><strong id="pQuestions">0</strong><small>questões</small></div><div class="card metric"><strong id="pAccuracy">—</strong><small>acerto</small></div><div class="card metric"><strong id="pStudied">0</strong><small>blocos estudados</small></div></div><div id="performanceDetail" class="empty" style="margin-top:14px"><strong>Ainda não há histórico suficiente.</strong>Registre sessões e questões para gerar análise.</div></section>
+
+<section class="page" id="export">
+<div class="eyebrow">Segurança e mobilidade</div><h2>Backup / impressão</h2><p class="lead">Transfira o histórico entre iPad e PC e mantenha uma cópia externa dos seus dados.</p>
+<div class="grid c2" style="margin-top:14px">
+  <div class="card section-card"><div class="section-title"><div><span class="eyebrow">Transferência</span><h3>Backup dos dados</h3></div></div><div id="backupStatus" class="notice">Nenhum backup exportado neste dispositivo.</div><div class="row" style="margin-top:12px"><button class="btn primary" onclick="exportFullBackup()">Exportar .json</button><label class="btn">Importar .json<input type="file" accept=".json" style="display:none" onchange="importFullBackupFile(this)"></label></div><p class="helper">Leve este arquivo para outro dispositivo e importe para continuar do mesmo ponto.</p></div>
+  <div class="card section-card"><div class="section-title"><div><span class="eyebrow">Impressão</span><h3>Conteúdo selecionado</h3></div></div><div class="row"><button class="btn mini" onclick="selectAllPrint()">Selecionar tudo</button><button class="btn mini" onclick="clearPrint()">Limpar</button></div><div id="printSelector" class="print-selector"></div><button class="btn primary" style="margin-top:10px" onclick="printSelected()">Imprimir selecionados</button></div>
+</div>
+<div class="danger-zone"><div><strong>Redefinir sistema</strong><span>Apaga os registros deste navegador.</span></div><button class="btn danger" onclick="resetAll()">Zerar dados</button></div>
+</section>
+
+<section class="page" id="printPage"><div id="printContent"></div></section>
+</div>
+</main></div>
+
+<div class="modal" id="sessionModal"><div class="modalbox"><h3>Concluir sessão</h3><div class="formgrid"><label class="lbl">Tempo líquido<input class="control" id="sTime" readonly></label><label class="lbl">Dificuldade<select class="control" id="sDifficulty"><option>Fácil</option><option selected>Normal</option><option>Difícil</option></select></label><label class="lbl">Questões feitas<input class="control" id="sQuestions" type="number" min="0" value="0"></label><label class="lbl">Acertos<input class="control" id="sCorrect" type="number" min="0" value="0"></label></div><textarea class="control" id="sNotes" style="margin-top:10px;min-height:80px" placeholder="Observações da sessão..."></textarea><div class="row" style="margin-top:12px"><button class="btn primary" onclick="saveSession()">Salvar sessão</button><button class="btn" onclick="closeModal()">Cancelar</button></div></div></div>
+
+<script>
+const TOPICS=[{"id": 1, "group": "Conhecimentos Gerais", "title": "Língua Portuguesa", "subs": ["Compreensão e interpretação", "Gêneros textuais", "Coesão textual", "Classes de palavras", "Sintaxe", "Pontuação", "Concordância", "Regência", "Crase", "Reescrita"]}, {"id": 2, "group": "Conhecimentos Gerais", "title": "Raciocínio Lógico", "subs": ["Estruturas lógicas", "Argumentação", "Proposições", "Tabelas-verdade", "Equivalências", "Leis de De Morgan", "Contagem", "Probabilidade", "Conjuntos"]}, {"id": 3, "group": "Conhecimentos Gerais", "title": "Informática aplicada", "subs": ["LibreOffice Writer", "LibreOffice Calc", "Navegadores", "Busca avançada", "Google Drive", "Gmail", "Google Agenda", "Google Meet", "Google Sheets", "Google Docs"]}, {"id": 4, "group": "Conhecimentos Gerais", "title": "Legislação complementar / TRT-8", "subs": ["Estrutura da Justiça do Trabalho", "Planejamento estratégico", "Ética", "Regimento Interno", "PCD e inclusão"]}, {"id": 5, "group": "Formação Jurídica e Administrativa", "title": "Direito Constitucional", "subs": ["Princípios fundamentais", "Direitos e garantias", "Administração Pública", "Organização dos Poderes", "Poder Judiciário", "CNJ"]}, {"id": 6, "group": "Formação Jurídica e Administrativa", "title": "Direito Administrativo", "subs": ["Atos administrativos", "Agentes públicos", "Lei 8.112", "Poderes administrativos", "Responsabilidade civil do Estado", "Serviços públicos", "Organização administrativa", "Controle", "Improbidade", "Lei 9.784"]}, {"id": 7, "group": "Formação Jurídica e Administrativa", "title": "Licitações e contratos administrativos", "subs": ["Lei 14.133/2021", "Planejamento da contratação", "ETP", "Termo de referência", "Anteprojeto", "Projeto básico", "Projeto executivo", "Fiscalização contratual", "Recebimento", "Sanções"]}, {"id": 8, "group": "Formação Jurídica e Administrativa", "title": "Gestão Pública", "subs": ["Funções administrativas", "Planejamento estratégico", "SWOT", "BSC", "Estrutura organizacional", "Motivação", "Liderança", "Conflitos"]}, {"id": 9, "group": "Formação Jurídica e Administrativa", "title": "Orçamento Público", "subs": ["Finanças públicas", "Princípios orçamentários", "PPA", "LDO", "LOA"]}, {"id": 10, "group": "Arquitetura e Urbanismo", "title": "Teoria e História da Arquitetura e Urbanismo", "subs": ["História da arquitetura", "História do urbanismo", "Arquitetura moderna", "Arquitetura contemporânea", "Arquitetura brasileira", "Patrimônio", "Conservação", "Restauro"]}, {"id": 11, "group": "Arquitetura e Urbanismo", "title": "Representação gráfica e desenho técnico", "subs": ["Plantas", "Cortes", "Fachadas", "Detalhes", "Perspectiva", "Geometria descritiva", "Cotagem", "Escalas", "NBR 16636", "NBR 6492"]}, {"id": 12, "group": "Arquitetura e Urbanismo", "title": "AutoCAD, SketchUp e ferramentas digitais", "subs": ["AutoCAD 2D", "AutoCAD 3D", "SketchUp", "Representação tridimensional", "Documentação técnica"]}, {"id": 13, "group": "Arquitetura e Urbanismo", "title": "BIM e modelagem da informação", "subs": ["Conceito BIM", "BIM x CAD", "Modelagem paramétrica", "Revit", "Famílias", "Vistas", "Compatibilização", "IFC", "Interoperabilidade", "Usos BIM"]}, {"id": 14, "group": "Projeto Arquitetônico", "title": "Programa, concepção e desenvolvimento", "subs": ["Programa de necessidades", "Fluxograma", "Pré-dimensionamento", "Setorização", "Fluxos", "Implantação", "Partido", "Funcionalidade", "Flexibilidade", "Projeto executivo", "Detalhamento"]}, {"id": 15, "group": "Projeto Arquitetônico", "title": "Ergonomia", "subs": ["Antropometria", "Ergonomia aplicada", "Mobiliário", "Ambientes", "Postos de trabalho"]}, {"id": 16, "group": "Projeto Arquitetônico", "title": "Modulação e racionalização", "subs": ["Coordenação modular", "Racionalização", "Sistemas industrializados", "Pré-moldados"]}, {"id": 17, "group": "Acessibilidade", "title": "Acessibilidade arquitetônica", "subs": ["NBR 9050", "Desenho universal", "Rota acessível", "Rampas", "Escadas", "Corrimãos", "Portas", "Sanitários", "Vagas", "Sinalização", "Alcances"]}, {"id": 18, "group": "Conforto Ambiental", "title": "Conforto térmico", "subs": ["Clima", "Arquitetura bioclimática", "Insolação", "Orientação solar", "Carta solar", "Brises", "Ventilação", "Desempenho térmico"]}, {"id": 19, "group": "Conforto Ambiental", "title": "Conforto luminoso e luminotécnica", "subs": ["Iluminação natural", "Iluminação artificial", "Conforto visual", "Luminotécnica"]}, {"id": 20, "group": "Conforto Ambiental", "title": "Conforto acústico", "subs": ["Som", "Reverberação", "Reflexão", "Absorção", "Isolamento", "Tratamento acústico"]}, {"id": 21, "group": "Conforto Ambiental", "title": "Auditórios e espaços especiais", "subs": ["Forma", "Volume de ar", "Visibilidade", "Acústica", "Revestimentos"]}, {"id": 22, "group": "Sistemas Construtivos e Materiais", "title": "Tecnologia das construções", "subs": ["Sistemas construtivos", "Concreto", "Aço", "Madeira", "Vedações", "Coberturas", "Impermeabilização", "Pisos", "Forros", "Esquadrias", "Pinturas", "Revestimentos"]}, {"id": 23, "group": "Sistemas Construtivos e Materiais", "title": "Materiais e especificações", "subs": ["Propriedades", "Critérios de escolha", "Desempenho", "Especificação", "Quantitativos", "Caderno de encargos", "Memoriais", "Controle de qualidade"]}, {"id": 24, "group": "Estruturas e Projetos Complementares", "title": "Estruturas", "subs": ["Leitura de projeto", "Concreto", "Metálica", "Madeira", "Compatibilização"]}, {"id": 25, "group": "Estruturas e Projetos Complementares", "title": "Instalações elétricas", "subs": ["Leitura de projeto", "Pontos", "Circuitos", "Quadros", "Iluminação", "Compatibilização"]}, {"id": 26, "group": "Estruturas e Projetos Complementares", "title": "Instalações hidrossanitárias", "subs": ["Água fria", "Água quente", "Esgoto", "Águas pluviais", "Reservatórios", "Compatibilização"]}, {"id": 27, "group": "Estruturas e Projetos Complementares", "title": "Climatização e condicionamento ambiental", "subs": ["Ar-condicionado", "Ventilação", "Exaustão", "Espaços técnicos", "Compatibilização"]}, {"id": 28, "group": "Estruturas e Projetos Complementares", "title": "Transporte vertical e equipamentos mecânicos", "subs": ["Elevadores", "Elevadores de veículos", "Escadas rolantes", "Esteiras"]}, {"id": 29, "group": "Estruturas e Projetos Complementares", "title": "Telecomunicações e instalações especiais", "subs": ["Telefonia", "Cabeamento", "Dados", "Alarmes", "Segurança", "SPDA"]}, {"id": 30, "group": "Segurança Contra Incêndio", "title": "Prevenção e combate a incêndio", "subs": ["Saídas de emergência", "Rotas de fuga", "Escadas", "Sinalização", "Sistemas de segurança", "NBR 9077"]}, {"id": 31, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Fiscalização de obras e serviços", "subs": ["Acompanhamento", "Controle da execução", "Conformidade", "Inspeções", "Registros", "Recebimento provisório", "Recebimento definitivo", "Não conformidades"]}, {"id": 32, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Medições de obras", "subs": ["Critérios de medição", "Serviços executados", "Boletins", "Quantitativos", "Controle físico", "Controle financeiro"]}, {"id": 33, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Orçamento de obras", "subs": ["Levantamento quantitativo", "Planilha", "Composição de custos", "Custos diretos", "Custos indiretos", "BDI", "SINAPI", "CUB", "NBR 12721", "Decreto 7.983"]}, {"id": 34, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Planejamento de obras", "subs": ["Cronograma", "Físico-financeiro", "Sequência", "Dependências", "PERT", "CPM", "Caminho crítico", "Replanejamento"]}, {"id": 35, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Gerenciamento de projetos e obras", "subs": ["Escopo", "Prazo", "Custo", "Recursos", "Equipe", "Qualidade", "Riscos"]}, {"id": 36, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Canteiro de obras", "subs": ["Organização", "Fluxos", "Áreas de apoio", "Armazenamento", "Instalações provisórias", "Logística", "Segurança"]}, {"id": 37, "group": "Obras, Fiscalização, Orçamento e Gestão", "title": "Gestão da qualidade", "subs": ["Sistemas de qualidade", "Inspeção", "Critérios de aceitação", "Conformidade", "Rastreabilidade"]}, {"id": 38, "group": "Manutenção e Patologias", "title": "Manutenção predial", "subs": ["NBR 5674", "Preventiva", "Corretiva", "Preditiva", "Plano de manutenção", "Vida útil", "Responsabilidades"]}, {"id": 39, "group": "Manutenção e Patologias", "title": "Patologias construtivas", "subs": ["Fissuras", "Trincas", "Infiltrações", "Umidade", "Impermeabilização", "Corrosão", "Diagnóstico", "Correções"]}, {"id": 40, "group": "Urbanismo", "title": "Planejamento e projeto urbano", "subs": ["Planejamento", "Uso do solo", "Ocupação", "Zoneamento", "Plano Diretor", "Equipamentos", "Espaços públicos"]}, {"id": 41, "group": "Urbanismo", "title": "Estatuto da Cidade — Lei 10.257/2001", "subs": ["Política urbana", "Função social", "Plano Diretor", "Instrumentos", "IPTU progressivo", "Preempção", "Outorga onerosa", "Operações urbanas", "EIV"]}, {"id": 42, "group": "Urbanismo", "title": "Parcelamento do Solo — Lei 6.766/1979", "subs": ["Parcelamento", "Loteamento", "Desmembramento", "Requisitos", "Sistema viário", "Áreas públicas", "Infraestrutura"]}, {"id": 43, "group": "Urbanismo", "title": "Infraestrutura urbana", "subs": ["Sistema viário", "Pavimentação", "Drenagem", "Água", "Esgoto", "Resíduos", "Energia", "Comunicações"]}, {"id": 44, "group": "Urbanismo", "title": "Topografia, cartografia e georreferenciamento", "subs": ["Poligonais", "Curvas de nível", "Altimetria", "Planimetria", "Movimento de terra", "Coordenadas", "Implantação"]}, {"id": 45, "group": "Urbanismo", "title": "Sistema viário", "subs": ["Hierarquia", "Dimensionamento", "Geometria", "Pavimentação", "Circulação"]}, {"id": 46, "group": "Meio Ambiente e Sustentabilidade", "title": "Legislação e gestão ambiental", "subs": ["Licenciamento", "Impacto ambiental", "EIA", "RIMA", "Legislação ambiental", "Gestão ambiental"]}, {"id": 47, "group": "Meio Ambiente e Sustentabilidade", "title": "Sustentabilidade urbana e arquitetônica", "subs": ["Baixo impacto", "Uso racional de água", "Cisternas", "Energia solar", "Soluções passivas", "Bioclimática"]}, {"id": 48, "group": "Meio Ambiente e Sustentabilidade", "title": "Desempenho e eficiência energética", "subs": ["Desempenho energético", "Certificação ambiental", "Eficiência", "Insolação", "Ventilação", "Iluminação", "Consumo"]}, {"id": 49, "group": "Paisagismo e Comunicação Visual", "title": "Paisagismo", "subs": ["Projeto paisagístico", "Espaços livres", "Praças", "Parques", "Jardins", "Áreas externas"]}, {"id": 50, "group": "Paisagismo e Comunicação Visual", "title": "Comunicação visual", "subs": ["Sinalização", "Orientação espacial", "Elementos gráficos", "Integração com arquitetura"]}, {"id": 51, "group": "Segurança do Trabalho", "title": "Segurança e saúde na construção civil", "subs": ["Riscos", "EPC", "EPI", "Canteiro", "Trabalho em altura", "NRs", "Prevenção de acidentes"]}, {"id": 52, "group": "Avaliação e Patrimônio Imobiliário", "title": "Avaliação de imóveis urbanos", "subs": ["Valor de mercado", "Métodos", "Método comparativo", "Pesquisa imobiliária", "Laudos", "NBR 14653"]}, {"id": 53, "group": "Legislação Profissional", "title": "Exercício profissional da Arquitetura e Urbanismo", "subs": ["Lei 12.378/2010", "CAU/BR", "CAU/UF", "Atribuições", "RRT", "Ética", "Responsabilidades"]}, {"id": 54, "group": "Discursiva / Estudo de Caso", "title": "Produção discursiva técnica", "subs": ["Situação-problema", "Diagnóstico", "Fundamentação", "Solução", "Justificativa", "Estudo de caso"]}];
+const DAYS=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
+const DEFAULT_STATE={
+  availability:{
+    'Segunda':{enabled:true,hours:2,start:''},
+    'Terça':{enabled:true,hours:3,start:''},
+    'Quarta':{enabled:true,hours:2,start:''},
+    'Quinta':{enabled:true,hours:3,start:''},
+    'Sexta':{enabled:false,hours:0,start:''},
+    'Sábado':{enabled:true,hours:3,start:''},
+    'Domingo':{enabled:true,hours:2,start:''}
+  },
+  method:null,selectedSubjects:[],schedule:[],sessions:[],questions:[],reviews:[],materials:[],discursives:[],simulations:[],errors:[],checkins:[],topicState:{},printSelected:[],
+  planning:{start:'2026-10-01',end:'2026-11-30',replanMode:'balanced',autoReplan:true},
+  calendarCursor:'2026-10-01'
+};
+let state=load();
+function load(){try{return Object.assign(structuredClone(DEFAULT_STATE),JSON.parse(localStorage.getItem('trt8hub')||'{}'))}catch(e){return structuredClone(DEFAULT_STATE)}}
+function save(){localStorage.setItem('trt8hub',JSON.stringify(state));refreshAll()}
+function go(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+ document.querySelectorAll('.topnav button[data-page], .more-menu button[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ document.querySelectorAll('.topnav button[data-page]').forEach(b=>{if(['home','mentorship','today','plan','edital'].includes(id))b.classList.toggle('active',b.dataset.page===id)});
+ if(typeof moreMenu!=='undefined')moreMenu.classList.remove('open');
+ if(id==='mentorship'&&typeof renderMentorship==='function')renderMentorship();
+ if(id==='calendar'&&typeof renderCalendar==='function')renderCalendar();
+ if(id==='topicDetail'&&typeof renderTopicDetail==='function')renderTopicDetail();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function calcAvail(){let total=0;document.querySelectorAll('.aEnable').forEach(c=>{if(c.checked){let h=+document.querySelector(`.aHours[data-day="${c.dataset.day}"]`).value||0;total+=h}});document.getElementById('availTotal').textContent=`Total semanal: ${total.toFixed(1)}h`}
+function saveAvailability(){let a={};DAYS.forEach(d=>{a[d]={enabled:document.querySelector(`.aEnable[data-day="${d}"]`).checked,hours:+document.querySelector(`.aHours[data-day="${d}"]`).value||0,start:document.querySelector(`.aStart[data-day="${d}"]`).value}});state.availability=a;save();alert('Disponibilidade salva.')}
+function saveMethod(){
+ let t=+theoryPct.value,q=+questionsPct.value;if(t+q!==100){alert('Teoria + questões deve somar 100%.');return}
+ state.method={sessionLength:+sessionLength.value,maxSubjects:+maxSubjects.value,theoryPct:t,questionsPct:q,mainSource:mainSource.value,reviewScheme:reviewScheme.value};
+ state.planning={start:planStart.value||'2026-10-01',end:planEnd.value||'2026-11-30',replanMode:replanMode.value,autoReplan:autoReplan.checked};
+ state.calendarCursor=state.planning.start;
+ save();alert('Método e regras de replanejamento salvos.')
+}
+function renderSubjectSelector(){let root=subjectSelector;root.innerHTML='';let groups=[...new Set(TOPICS.map(t=>t.group))];groups.forEach(g=>{let box=document.createElement('label');box.className='item';let checked=state.selectedSubjects.includes(g);box.innerHTML=`<input type="checkbox" class="subjectCheck" value="${g}" ${checked?'checked':''}><main><strong>${g}</strong><div class="muted">${TOPICS.filter(t=>t.group===g).length} blocos</div></main>`;root.appendChild(box)})}
+function saveSubjects(){state.selectedSubjects=[...document.querySelectorAll('.subjectCheck:checked')].map(x=>x.value);save();alert('Matérias do ciclo salvas.')}
+function selectRecommended(){let base=['Conhecimentos Gerais','Formação Jurídica e Administrativa','Arquitetura e Urbanismo','Projeto Arquitetônico','Acessibilidade','Obras, Fiscalização, Orçamento e Gestão'];document.querySelectorAll('.subjectCheck').forEach(c=>c.checked=base.includes(c.value))}
+
+function configured(){let h=Object.values(state.availability).some(x=>x.enabled&&x.hours>0);return h&&state.method&&state.selectedSubjects.length}
+function isoDate(d){return d.toISOString().slice(0,10)}
+function parseDate(s){let [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12,0,0)}
+function dayNameFromDate(s){let js=parseDate(s).getDay(),idx=(js+6)%7;return DAYS[idx]}
+function fmtDate(s){return parseDate(s).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'})}
+function mondayOf(s){let d=parseDate(s),idx=(d.getDay()+6)%7;d.setDate(d.getDate()-idx);return isoDate(d)}
+function datesBetween(start,end){let out=[],d=parseDate(start),e=parseDate(end);while(d<=e){out.push(isoDate(d));d.setDate(d.getDate()+1)}return out}
+function capacityForDate(date){let a=state.availability[dayNameFromDate(date)];return a&&a.enabled?Math.round((a.hours||0)*60):0}
+function usedMinutes(date,excludeIds=[]){return state.schedule.filter(s=>s.date===date&&!excludeIds.includes(s.id)&&['planned','partial','completed'].includes(s.status)).reduce((a,s)=>a+(s.status==='partial'?s.remaining:s.duration),0)}
+function nextId(){return 'sch_'+Date.now()+'_'+Math.random().toString(36).slice(2,8)}
+function topicPriority(topic){
+ const high=['Fiscalização de obras e serviços','Orçamento de obras','Tecnologia das construções','Acessibilidade arquitetônica','Medições de obras','Licitações e contratos administrativos','Planejamento de obras','Produção discursiva técnica','Programa, concepção e desenvolvimento','Materiais e especificações'];
+ if(high.includes(topic))return 3;
+ return 1;
+}
+function generateSchedule(){
+ if(!configured()){alert('Complete disponibilidade, método e matérias do ciclo primeiro.');go('setup');return}
+ let start=state.planning?.start||'2026-10-01',end=state.planning?.end||'2026-11-30';
+ let groups=state.selectedSubjects,cursor=0,subcursor={};state.schedule=[];
+ for(const date of datesBetween(start,end)){
+   const cap=capacityForDate(date);if(!cap)continue;
+   let remaining=cap,subjectsToday=0;
+   while(remaining>0 && subjectsToday<(state.method.maxSubjects||2)){
+     let g=groups[cursor%groups.length],candidates=TOPICS.filter(t=>t.group===g);
+     subcursor[g]=subcursor[g]||0;let topic=candidates[subcursor[g]%candidates.length];subcursor[g]++;
+     let dur=Math.min(state.method.sessionLength||60,remaining);
+     if(dur<25)break;
+     state.schedule.push({id:nextId(),date,day:dayNameFromDate(date),group:g,topic:topic.title,topicKey:topic.id,duration:dur,remaining:dur,type:'Teoria',status:'planned',origin:'base',priority:topicPriority(topic.title)});
+     remaining-=dur;subjectsToday++;cursor++;
+   }
+ }
+ state.calendarCursor=start;save();renderSchedule();renderToday();alert('Cronograma gerado de '+fmtDate(start)+' até '+fmtDate(end)+'.')
+}
+function clearSchedule(){if(confirm('Limpar todo o cronograma atual?')){state.schedule=[];save();renderSchedule();renderToday()}}
+function sessionStatusLabel(s){return s.status==='completed'?'Concluída':s.status==='partial'?'Parcial':s.status==='missed'?'Não feita':s.status==='moved'?'Replanejada':'Planejada'}
+function statusTagClass(s){return s.status==='completed'?'green':s.status==='missed'?'gold':s.status==='partial'?'':'gray'}
+function renderSchedule(){
+ if(state.planning?.autoReplan)replanOverdue(false);
+ const warn=planWarning;warn.textContent=configured()?'Reorganização: '+({balanced:'Equilibrada',conservative:'Conservadora',priority:'Prioridade máxima'}[state.planning?.replanMode||'balanced'])+' • sexta-feira só será usada se você der disponibilidade.':'Complete a configuração para gerar o cronograma.';
+ let cursor=state.calendarCursor||state.planning?.start||isoDate(new Date()),mon=mondayOf(cursor),monday=parseDate(mon),sun=new Date(monday);sun.setDate(sun.getDate()+6);
+ weekLabel.textContent=monday.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'})+' — '+sun.toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'});
+ let root=weekView;if(!state.schedule.length){root.className='empty';root.innerHTML='<strong>Cronograma ainda não gerado.</strong>Configure seus horários e matérias primeiro.'}
+ else{
+   root.className='week';root.innerHTML='';
+   for(let i=0;i<7;i++){let d=new Date(monday);d.setDate(d.getDate()+i);let date=isoDate(d),box=document.createElement('div');box.className='day';let day=dayNameFromDate(date),cap=capacityForDate(date);box.innerHTML=`<h4>${day}</h4><small>${fmtDate(date)} • ${cap?cap/60+'h':'folga'}</small>`;
+     let arr=state.schedule.filter(s=>s.date===date&&s.status!=='moved');
+     if(!arr.length)box.innerHTML+='<div class="muted" style="margin-top:9px">Sem sessão</div>';
+     arr.forEach(s=>{let rem=s.status==='partial'?s.remaining:s.duration;box.innerHTML+=`<div class="session"><b>${s.topic}</b><br>${rem} min • ${sessionStatusLabel(s)}${s.origin==='recovery'?'<br>↳ replanejada':''}</div>`});
+     root.appendChild(box)
+   }
+ }
+ let cv=cycleView;if(!state.selectedSubjects.length){cv.className='empty';cv.innerHTML='<strong>Ciclo ainda não definido.</strong>Selecione matérias.'}else{cv.className='card';cv.innerHTML='<h3>Ordem do ciclo</h3>'+state.selectedSubjects.map((g,i)=>`<div class="item"><span>${i+1}</span><main><strong>${g}</strong></main></div>`).join('')}
+}
+function moveWeek(delta){let d=parseDate(state.calendarCursor||state.planning?.start||isoDate(new Date()));d.setDate(d.getDate()+delta*7);state.calendarCursor=isoDate(d);save();renderSchedule()}
+function jumpToday(){let t=isoDate(new Date()),start=state.planning?.start||t,end=state.planning?.end||t;state.calendarCursor=t<start?start:(t>end?end:t);save();renderSchedule()}
+function renderToday(){
+ let root=todayList,date=isoDate(new Date());todayDateLabel.textContent=parseDate(date).toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+ if(state.planning?.autoReplan)replanOverdue(false);
+ let arr=state.schedule.filter(s=>s.date===date&&s.status!=='moved');
+ if(!arr.length){root.className='empty';root.innerHTML='<strong>Nada programado para hoje.</strong>O sistema respeita sua disponibilidade atual.';homeToday.innerHTML=root.innerHTML;homeToday.className='empty';return}
+ root.className='stack';root.innerHTML=arr.map(s=>`<div class="item"><main><strong>${s.topic}</strong><div class="muted">${s.group} • ${s.status==='partial'?s.remaining:s.duration} min • ${sessionStatusLabel(s)}</div></main>${s.status==='completed'?'<span class="tag green">feito</span>':`<button class="btn primary" onclick="startPlannedById('${s.id}')">Iniciar</button><button class="btn soft" onclick="markComplete('${s.id}')">Concluir</button><button class="btn" onclick="markPartial('${s.id}')">Parcial</button><button class="btn danger" onclick="markMissed('${s.id}')">Não fiz</button>`}</div>`).join('');
+ homeToday.className='stack';homeToday.innerHTML=arr.map(s=>`<div class="item"><main><strong>${s.topic}</strong><div class="muted">${s.status==='partial'?s.remaining:s.duration} min • ${sessionStatusLabel(s)}</div></main></div>`).join('')
+}
+function startPlannedById(id){let s=state.schedule.find(x=>x.id===id);if(!s)return;currentScheduleId=id;focusSubject.value=s.group;populateFocusTopics();focusTopic.value=s.topic;focusMaterial.value='';renderFocusContext();go('focus')}
+function startPlanned(topic){let t=TOPICS.find(x=>x.title===topic);if(t){focusSubject.value=t.group;populateFocusTopics();focusTopic.value=t.title}go('focus')}
+function markComplete(id){let s=state.schedule.find(x=>x.id===id);if(!s)return;s.status='completed';s.remaining=0;s.completedAt=new Date().toISOString();save()}
+function markPartial(id){let s=state.schedule.find(x=>x.id===id);if(!s)return;let done=Number(prompt('Quantos minutos você conseguiu cumprir?',Math.round(s.duration/2)));if(!Number.isFinite(done)||done<=0||done>=s.duration){alert('Informe um valor maior que 0 e menor que a duração total.');return}s.status='partial';s.remaining=s.duration-done;s.completedMinutes=(s.completedMinutes||0)+done;save();replanSessionRemainder(id)}
+function markMissed(id){let s=state.schedule.find(x=>x.id===id);if(!s)return;s.status='missed';s.remaining=s.remaining||s.duration;s.missedAt=new Date().toISOString();save();replanSessionRemainder(id)}
+function findNextSlot(afterDate,minutes,excludeIds=[]){
+ let start=parseDate(afterDate);start.setDate(start.getDate()+1);let end=parseDate(state.planning?.end||'2026-11-30');
+ for(let d=start;d<=end;d.setDate(d.getDate()+1)){let date=isoDate(d),cap=capacityForDate(date);if(!cap)continue;let free=cap-usedMinutes(date,excludeIds);if(free>=Math.min(minutes,state.method?.sessionLength||60))return {date,free}}
+ return null
+}
+function replanSessionRemainder(id){
+ let s=state.schedule.find(x=>x.id===id);if(!s||!s.remaining)return;
+ let slot=findNextSlot(s.date,s.remaining,[id]);if(slot){let dur=Math.min(s.remaining,slot.free);state.schedule.push({id:nextId(),date:slot.date,day:dayNameFromDate(slot.date),group:s.group,topic:s.topic,topicKey:s.topicKey||canonicalTopicKey(s.group,s.topic),duration:dur,remaining:dur,type:s.type,status:'planned',origin:'recovery',priority:s.priority||1,parentId:s.id});s.remaining-=dur;if(s.remaining<=0)s.remaining=0;save()}
+ else alert('Não encontrei espaço livre até '+fmtDate(state.planning?.end||'2026-11-30')+'. Ajuste a disponibilidade ou o período.')
+}
+function replanOverdue(showMessage){
+ if(!state.schedule.length)return;let today=isoDate(new Date()),changed=false;
+ let overdue=state.schedule.filter(s=>s.date<today&&['planned','partial'].includes(s.status)&&s.origin!=='recovery');
+ for(const s of overdue){s.status='missed';s.remaining=s.remaining||s.duration;let before=state.schedule.length;replanSessionRemainder(s.id);if(state.schedule.length>before)changed=true}
+ if(changed){localStorage.setItem('trt8hub',JSON.stringify(state));if(showMessage)alert('Pendências redistribuídas nas próximas janelas disponíveis.')}else if(showMessage)alert('Não há pendências vencidas para reorganizar.')
+}
+
+
+const groupFilter=document.getElementById('groupFilter');[...new Set(TOPICS.map(t=>t.group))].forEach(g=>{let o=document.createElement('option');o.value=g;o.textContent=g;groupFilter.appendChild(o)})
+function topicStatus(id){return state.topicState[id]?.status||'Não iniciado'}
+
+function canonicalTopicKey(group,topic){
+ let t=TOPICS.find(x=>x.title===topic&&x.group===group)||TOPICS.find(x=>x.title===topic);
+ return t?t.id:(norm(group)+'::'+norm(topic));
+}
+function attachTopicKeys(){
+ state.sessions.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.group,x.topic));
+ state.questions.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.subject,x.topic));
+ state.materials.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.subject,x.topic));
+ state.reviews.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.group,x.topic));
+ state.errors.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.subject,x.topic));
+ state.discursives.forEach(x=>{
+   if(x.topic&&x.group)x.topicKey=x.topicKey||canonicalTopicKey(x.group,x.topic)
+ });
+ state.schedule.forEach(x=>x.topicKey=x.topicKey||canonicalTopicKey(x.group,x.topic));
+}
+function recordsForTopic(t){
+ let key=t.id;
+ let sessions=state.sessions.filter(x=>(x.topicKey||canonicalTopicKey(x.group,x.topic))===key);
+ let questions=state.questions.filter(x=>(x.topicKey||canonicalTopicKey(x.subject,x.topic))===key);
+ let materials=state.materials.filter(x=>(x.topicKey||canonicalTopicKey(x.subject,x.topic))===key || (x.subject===t.group&&!x.topic));
+ let reviews=state.reviews.filter(x=>(x.topicKey||canonicalTopicKey(x.group,x.topic))===key);
+ let errors=state.errors.filter(x=>(x.topicKey||canonicalTopicKey(x.subject,x.topic))===key);
+ let discursives=state.discursives.filter(x=>x.topicKey===key || (x.topic===t.title&&x.group===t.group));
+ let schedules=state.schedule.filter(x=>(x.topicKey||canonicalTopicKey(x.group,x.topic))===key);
+ return {sessions,questions,materials,reviews,errors,discursives,schedules}
+}
+
+function getTopicRecord(group,topic){return TOPICS.find(t=>t.group===group&&t.title===topic)||TOPICS.find(t=>t.title===topic)}
+function topicMetrics(group,topic){
+ let t=getTopicRecord(group,topic);if(!t)return {sessions:[],qs:[],materials:[],reviews:[],errors:[],discursives:[],totalQ:0,right:0,accuracy:null,minutes:0};
+ let r=recordsForTopic(t),qs=r.questions,totalQ=qs.reduce((a,x)=>a+(+x.count||0),0),right=qs.reduce((a,x)=>a+(+x.correct||0),0);
+ return {sessions:r.sessions,qs,materials:r.materials,reviews:r.reviews,errors:r.errors,discursives:r.discursives,totalQ,right,accuracy:totalQ?Math.round(right/totalQ*100):null,minutes:r.sessions.reduce((a,x)=>a+(+x.mins||0),0)}
+}
+function syncTopicState(group,topic){
+ let t=getTopicRecord(group,topic);if(!t)return;let m=topicMetrics(group,topic),cur=state.topicState[t.id]?.status||'Não iniciado';
+ if(cur==='Concluído')return;
+ let next=cur;
+ if(m.sessions.length||m.materials.some(x=>x.status==='Em estudo'||x.status==='Concluído')||m.totalQ)next='Estudando';
+ if(m.totalQ>=10&&m.accuracy<70)next='Revisar';
+ state.topicState[t.id]={...(state.topicState[t.id]||{}),status:next};
+}
+function studyTopic(group,topic){focusSubject.value=group;populateFocusTopics();focusTopic.value=topic;renderFocusContext();go('focus')}
+function questionsForTopic(group,topic){
+ const s=el('qSubject'),t=el('qTopic');if(s){s.value=group;populateQuestionTopicsSafe()}if(t)t.value=topic;go('questions')
+}
+function materialsForTopic(group,topic){
+ go('materials');const s=el('matSubject'),t=el('matTopic'),search=el('matSearch');
+ if(s){s.value=group;populateMaterialTopicsSafe()}if(t)t.value=topic;if(search)search.value=topic;
+ const fc=el('matFilterCourse'),fs=el('matFilterStatus');if(fc)fc.value='';if(fs)fs.value='';
+ renderMaterials()
+}
+
+let currentTopicId=null;
+function openTopicDetail(id){
+ currentTopicId=id;localStorage.setItem('trt8_current_topic',id);renderTopicDetail();go('topicDetail')
+}
+function topicCoverage(t,r){
+ let score=0;
+ if(r.materials.some(m=>(m.currentPage||0)>0 || ['Em estudo','Concluído'].includes(m.status)))score+=35;
+ if(r.sessions.length)score+=30;
+ if(r.questions.length)score+=20;
+ if(r.reviews.some(x=>x.done))score+=15;
+ return Math.min(100,score)
+}
+function topicMastery(t,r){
+ let coverage=topicCoverage(t,r),qTotal=r.questions.reduce((a,x)=>a+(+x.count||0),0),qRight=r.questions.reduce((a,x)=>a+(+x.correct||0),0),acc=qTotal?qRight/qTotal:0;
+ let reviewDone=r.reviews.filter(x=>x.done).length,reviewTotal=r.reviews.length;
+ let reviewScore=reviewTotal?reviewDone/reviewTotal:0;
+ let errPenalty=Math.min(.25,r.errors.length*.03);
+ let raw=(coverage/100*.35)+(acc*.45)+(reviewScore*.20)-errPenalty;
+ return Math.max(0,Math.min(100,Math.round(raw*100)))
+}
+function topicPriorityLabel(t,r){
+ let overdue=r.reviews.filter(x=>!x.done&&x.due<=todayISO()).length;
+ let qt=r.questions.reduce((a,x)=>a+(+x.count||0),0),qr=r.questions.reduce((a,x)=>a+(+x.correct||0),0),acc=qt?qr/qt:1;
+ if(overdue || (qt>=10&&acc<.60))return 'Muito alta';
+ if((qt>=10&&acc<.75) || topicCoverage(t,r)<35)return 'Alta';
+ if(topicMastery(t,r)>=80)return 'Manutenção';
+ return 'Normal';
+}
+function nextActionForTopic(t,r){
+ let overdue=r.reviews.filter(x=>!x.done&&x.due<=todayISO());
+ let qt=r.questions.reduce((a,x)=>a+(+x.count||0),0),qr=r.questions.reduce((a,x)=>a+(+x.correct||0),0),acc=qt?Math.round(qr/qt*100):null;
+ let mainMat=r.materials.find(m=>m.status==='Em estudo')||r.materials.find(m=>m.totalPages&&(m.currentPage||0)<m.totalPages)||r.materials[0];
+ if(overdue.length)return `Faça uma revisão curta de ${t.title} antes de avançar. Há ${overdue.length} revisão(ões) vencida(s).`;
+ if(acc!==null&&qt>=10&&acc<65)return `Priorize 20 a 25 questões de ${t.title} e registre os principais erros. Seu acerto atual é ${acc}%.`;
+ if(mainMat&&mainMat.totalPages&&(mainMat.currentPage||0)<mainMat.totalPages)return `Continue ${mainMat.name} a partir da página ${mainMat.currentPage||1}. Depois faça 10 a 15 questões do conteúdo alcançado.`;
+ if(!r.sessions.length)return `Faça uma primeira sessão de teoria de 60 a 90 minutos e finalize com 10 questões.`;
+ if(qt<20)return `Consolide o assunto com 15 a 20 questões antes de avançar para revisão espaçada.`;
+ if(topicMastery(t,r)>=80)return `Mantenha o assunto com revisão espaçada e questões ocasionais. Não precisa ocupar muito tempo do ciclo agora.`;
+ return `Faça uma sessão curta de revisão + 15 questões para consolidar o assunto.`;
+}
+function renderTopicDetail(){
+ if(!currentTopicId)currentTopicId=localStorage.getItem('trt8_current_topic');
+ let t=TOPICS.find(x=>x.id===currentTopicId);if(!t)return;
+ let r=recordsForTopic(t),coverage=topicCoverage(t,r),mastery=topicMastery(t,r);
+ let qt=r.questions.reduce((a,x)=>a+(+x.count||0),0),qr=r.questions.reduce((a,x)=>a+(+x.correct||0),0),acc=qt?Math.round(qr/qt*100):null;
+ let mins=r.sessions.reduce((a,x)=>a+(+x.mins||0),0),last=r.sessions.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+ tdGroup.textContent=t.group;tdTitle.textContent=t.title;tdSubtitle.textContent=t.subs.slice(0,3).join(' • ');
+ tdCoverage.textContent=coverage+'%';tdMastery.textContent=mastery+'%';tdQuestions.textContent=qt;tdAccuracy.textContent=acc===null?'sem questões':acc+'% de acerto';
+ tdTime.textContent=mins>=60?(mins/60).toFixed(mins%60?1:0)+'h':mins+' min';tdLastContact.textContent=last?'último contato '+new Date(last.date).toLocaleDateString('pt-BR'):'sem contato';
+ tdPriority.textContent=topicPriorityLabel(t,r);tdNextAction.textContent=nextActionForTopic(t,r);
+ tdStudyBtn.onclick=tdActionStudy.onclick=()=>studyTopic(t.group,t.title);
+ tdActionQuestions.onclick=()=>questionsForTopic(t.group,t.title);
+ tdActionMaterial.onclick=()=>materialsForTopic(t.group,t.title);
+ tdAddMaterial.onclick=()=>{go('materials');matSubject.value=t.group;populateMaterialTopics();matTopic.value=t.title;matName.focus()};
+ tdMap.innerHTML=[
+  ['Status',topicStatus(t.id)],
+  ['Subassuntos',t.subs.length],
+  ['Materiais',r.materials.length],
+  ['Sessões',r.sessions.length],
+  ['Revisões pendentes',r.reviews.filter(x=>!x.done).length],
+  ['Erros registrados',r.errors.length],
+  ['Discursivas relacionadas',r.discursives.length]
+ ].map(([a,b])=>`<div class="topic-map-row"><b>${a}</b><span>${b}</span></div>`).join('');
+ tdMaterials.innerHTML=r.materials.length?`<div class="topic-mini-list">${r.materials.slice(0,6).map(m=>`<div class="topic-mini-item"><strong>${m.name}</strong><small>${m.course} • ${m.type} • ${m.status}${m.totalPages?` • ${m.currentPage||0}/${m.totalPages} pág.`:''}</small><button class="topic-link-btn" onclick="useLinkedMaterial('${m.id}');studyTopic(${JSON.stringify(t.group)},${JSON.stringify(t.title)})">usar no estudo →</button></div>`).join('')}</div>`:'<div class="empty"><strong>Nenhum material vinculado.</strong></div>';
+ tdSessions.innerHTML=r.sessions.length?`<div class="topic-mini-list">${r.sessions.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,5).map(s=>`<div class="topic-mini-item"><strong>${s.type||'Estudo'} • ${s.mins||0} min</strong><small>${new Date(s.date).toLocaleDateString('pt-BR')}${s.material?' • '+s.material:''}</small></div>`).join('')}</div>`:'<div class="empty"><strong>Nenhuma sessão registrada.</strong></div>';
+ let errGroups={};r.errors.forEach(e=>errGroups[e.type]=(errGroups[e.type]||0)+1);
+ tdPerformance.innerHTML=`<div class="topic-stat-line"><span>Questões</span><strong>${qt}</strong></div><div class="topic-stat-line"><span>Acerto</span><strong>${acc===null?'—':acc+'%'}</strong></div><div class="topic-stat-line"><span>Erros registrados</span><strong>${r.errors.length}</strong></div>${Object.entries(errGroups).slice(0,4).map(([k,v])=>`<div class="topic-stat-line"><span>${k}</span><strong>${v}</strong></div>`).join('')}<div class="mastery-bar"><i style="width:${mastery}%"></i></div>`;
+ tdReviews.innerHTML=`<div class="topic-stat-line"><span>Revisões pendentes</span><strong>${r.reviews.filter(x=>!x.done).length}</strong></div><div class="topic-stat-line"><span>Revisões concluídas</span><strong>${r.reviews.filter(x=>x.done).length}</strong></div><div class="topic-stat-line"><span>Simulados cadastrados</span><strong>${state.simulations.length}</strong></div><div class="topic-stat-line"><span>Discursivas relacionadas</span><strong>${r.discursives.length}</strong></div>`;
+}
+
+function renderEdital(){
+ let q=norm(editalSearch.value),gf=groupFilter.value,sf=topicStateFilter.value,root=editalList;root.innerHTML='';let current='';
+ TOPICS.filter(t=>{let txt=norm([t.group,t.title,...t.subs].join(' ')),st=topicStatus(t.id);return(!q||txt.includes(q))&&(!gf||t.group===gf)&&(!sf||st===sf)}).forEach(t=>{
+   if(current!==t.group){current=t.group;let g=document.createElement('div');g.className='group';g.textContent=current;root.appendChild(g)}
+   let st=topicStatus(t.id),m=topicMetrics(t.group,t.title),el=document.createElement('div');el.className='topic';
+   let accuracy=m.accuracy===null?'—':m.accuracy+'%';
+   el.innerHTML=`<div class="topichead"><input type="checkbox" class="printCheck" data-id="${t.id}" ${state.printSelected.includes(t.id)?'checked':''}><div><strong>${t.title}</strong><div class="muted">${t.subs.length} subassuntos • ${st} • ${m.materials.length} materiais</div></div><select class="control statusSelect" data-id="${t.id}" style="width:125px;padding:6px"><option ${st==='Não iniciado'?'selected':''}>Não iniciado</option><option ${st==='Estudando'?'selected':''}>Estudando</option><option ${st==='Revisar'?'selected':''}>Revisar</option><option ${st==='Concluído'?'selected':''}>Concluído</option></select><span>›</span></div>
+   <div class="topicbody"><div class="subs">${t.subs.map(s=>`<div class="sub">${s}</div>`).join('')}</div>
+   <div class="mini-grid"><div class="mini-stat"><strong>${m.sessions.length}</strong><span>sessões</span></div><div class="mini-stat"><strong>${m.minutes} min</strong><span>tempo líquido</span></div><div class="mini-stat"><strong>${m.totalQ}</strong><span>questões</span></div><div class="mini-stat"><strong>${accuracy}</strong><span>acerto</span></div></div>
+   <div class="topic-actions"><button class="btn primary" onclick="openTopicDetail('${t.id}')">Abrir ficha</button><button class="btn" onclick="studyTopic(${JSON.stringify(t.group)},${JSON.stringify(t.title)})">Estudar</button><button class="btn" onclick="materialsForTopic(${JSON.stringify(t.group)},${JSON.stringify(t.title)})">Materiais (${m.materials.length})</button><button class="btn" onclick="questionsForTopic(${JSON.stringify(t.group)},${JSON.stringify(t.title)})">Questões</button></div></div>`;
+   el.querySelector('.topichead').onclick=e=>{if(e.target.tagName!=='SELECT'&&e.target.type!=='checkbox')el.classList.toggle('open')};
+   el.querySelector('.statusSelect').onchange=e=>{state.topicState[t.id]={...(state.topicState[t.id]||{}),status:e.target.value};save()};
+   el.querySelector('.printCheck').onchange=e=>{if(e.target.checked&&!state.printSelected.includes(t.id))state.printSelected.push(t.id);if(!e.target.checked)state.printSelected=state.printSelected.filter(x=>x!==t.id);save()};root.appendChild(el)
+ })
+}
+
+let seconds=0,running=false,timerHandle=null,currentScheduleId=null;
+function drawTimer(){let h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;timer.textContent=[h,m,s].map(v=>String(v).padStart(2,'0')).join(':')}
+function toggleTimer(){running=!running;timerBtn.textContent=running?'Pausar':seconds?'Continuar':'Iniciar';if(running&&!timerHandle)timerHandle=setInterval(()=>{if(running){seconds++;drawTimer()}},1000)}
+function resetTimer(){running=false;seconds=0;drawTimer();timerBtn.textContent='Iniciar'}
+function finishSession(){if(seconds<1){alert('Inicie o cronômetro antes de concluir.');return}running=false;sTime.value=Math.round(seconds/60)+' min';sessionModal.classList.add('open')}
+function closeModal(){sessionModal.classList.remove('open')}
+function saveSession(){
+ let group=focusSubject.value,topic=focusTopic.value,type=focusType.value,mins=Math.max(1,Math.round(seconds/60)),qs=+sQuestions.value||0,correct=+sCorrect.value||0;if(correct>qs){alert('Acertos não podem ser maiores que questões.');return}
+ state.sessions.push({id:'ses_'+Date.now(),date:new Date().toISOString(),group,topic,topicKey:canonicalTopicKey(group,topic),type,mins,material:focusMaterial.value,difficulty:sDifficulty.value,notes:sNotes.value,scheduleId:currentScheduleId||null});
+ if(qs) state.questions.push({id:'q_'+Date.now(),date:new Date().toISOString().slice(0,10),subject:group,topic,topicKey:canonicalTopicKey(group,topic),count:qs,correct,board:'FCC',source:'session'});
+ if(currentScheduleId){let sch=state.schedule.find(x=>x.id===currentScheduleId);if(sch){sch.status='completed';sch.remaining=0;sch.completedAt=new Date().toISOString();sch.actualMinutes=mins}}
+ syncTopicState(group,topic);
+ if(state.method&&state.method.reviewScheme!=='manual'){
+   let ds=state.method.reviewScheme.split('-').map(Number);
+   if(qs>=10){let acc=Math.round(correct/qs*100);if(acc<60)ds=[2,7,21];else if(acc>=85)ds=[7,21,45]}
+   ds.forEach(d=>{let due=new Date();due.setDate(due.getDate()+d);state.reviews.push({id:'rev_'+Date.now()+'_'+d,topic,group,topicKey:canonicalTopicKey(group,topic),due:due.toISOString().slice(0,10),done:false,sourceSession:currentScheduleId||null})})
+ }
+ save();currentScheduleId=null;closeModal();resetTimer();sQuestions.value=0;sCorrect.value=0;sNotes.value='';alert('Sessão salva e áreas relacionadas atualizadas.')
+}
+
+function el(id){return document.getElementById(id)}
+function getStudyGroups(){return [...new Set(TOPICS.map(t=>t.group))]}
+function fillSelect(selectId,values,keepValue=true){
+ const select=el(selectId); if(!select)return;
+ const old=keepValue?select.value:'';
+ select.innerHTML=values.map(v=>`<option value="${String(v).replaceAll('"','&quot;')}">${v}</option>`).join('');
+ if(old && values.includes(old))select.value=old;
+}
+function initializeStudySelects(){
+ const groups=getStudyGroups();
+ ['focusSubject','qSubject','matSubject','errSubject','dSubject'].forEach(id=>fillSelect(id,groups));
+ populateFocusTopicsSafe();
+ populateQuestionTopicsSafe();
+ populateMaterialTopicsSafe();
+ populateErrorTopicsSafe();
+ populateDiscursiveTopicsSafe();
+}
+function populateFocusTopicsSafe(){
+ const subject=el('focusSubject'),topic=el('focusTopic');if(!subject||!topic)return;
+ const values=TOPICS.filter(t=>t.group===subject.value).map(t=>t.title);
+ fillSelect('focusTopic',values);
+ if(typeof renderFocusContext==='function')renderFocusContext();
+}
+function populateQuestionTopicsSafe(){
+ const subject=el('qSubject');if(!subject)return;
+ fillSelect('qTopic',TOPICS.filter(t=>t.group===subject.value).map(t=>t.title));
+}
+function populateMaterialTopicsSafe(){
+ const subject=el('matSubject'),topic=el('matTopic');if(!subject||!topic)return;
+ const old=topic.value;
+ const values=TOPICS.filter(t=>t.group===subject.value).map(t=>t.title);
+ topic.innerHTML='<option value="">Sem vínculo específico</option>'+values.map(v=>`<option value="${String(v).replaceAll('"','&quot;')}">${v}</option>`).join('');
+ if(old && values.includes(old))topic.value=old;
+}
+function populateErrorTopicsSafe(){
+ const subject=el('errSubject');if(!subject)return;
+ fillSelect('errTopic',TOPICS.filter(t=>t.group===subject.value).map(t=>t.title));
+}
+function populateDiscursiveTopicsSafe(){
+ const subject=el('dSubject');if(!subject)return;
+ fillSelect('dTopic',TOPICS.filter(t=>t.group===subject.value).map(t=>t.title));
+}
+
+function populateFocus(){initializeStudySelects()}
+function populateFocusTopics(){populateFocusTopicsSafe()}
+function addQuestions(){
+ let count=+qCount.value||0,correct=+qCorrect.value||0;if(count<1||correct<0||correct>count){alert('Revise quantidade e acertos.');return}
+ let subject=qSubject.value,topic=qTopic.value;state.questions.push({id:'q_'+Date.now(),subject,topic,topicKey:canonicalTopicKey(subject,topic),count,correct,board:qBoard.value,date:qDate.value||new Date().toISOString().slice(0,10),source:'manual'});
+ syncTopicState(subject,topic);save();qCount.value='';qCorrect.value=''
+}
+
+function errorFromQuestion(subject,topic){
+ go('errors');errSubject.value=subject;populateErrorTopics();errTopic.value=topic;errSource.value='Questões';errNote.focus()
+}
+function renderQuestions(){let total=state.questions.reduce((a,x)=>a+x.count,0),right=state.questions.reduce((a,x)=>a+x.correct,0);qTotal.textContent=total;qRight.textContent=right;qRate.textContent=total?Math.round(right/total*100)+'%':'—';if(!state.questions.length){questionHistory.innerHTML='<div class="empty"><strong>Nenhum registro.</strong>Adicione o primeiro bloco de questões.</div>';return}questionHistory.innerHTML='<div class="card"><table class="table"><thead><tr><th>Data</th><th>Matéria</th><th>Assunto</th><th>Questões</th><th>Acertos</th><th>%</th></tr></thead><tbody>'+state.questions.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${x.subject}</td><td>${x.topic||'—'}</td><td>${x.count}</td><td>${x.correct}</td><td>${Math.round(x.correct/x.count*100)}%</td></tr>`).join('')+'</tbody></table></div>'}
+function renderReviews(){let pending=state.reviews.filter(x=>!x.done);if(!pending.length){reviewList.className='empty';reviewList.innerHTML='<strong>Nenhuma revisão programada.</strong>Conclua uma sessão para começar.';return}reviewList.className='stack';reviewList.innerHTML=pending.sort((a,b)=>a.due.localeCompare(b.due)).map((x,i)=>`<div class="item"><main><strong>${x.topic}</strong><div class="muted">${x.group} • ${x.due}</div></main><button class="btn soft" onclick="completeReview(${state.reviews.indexOf(x)})">Concluir</button></div>`).join('')}
+function completeReview(i){let r=state.reviews[i];if(!r)return;r.done=true;r.completedAt=new Date().toISOString();syncTopicState(r.group,r.topic);save()}
+
+
+const MAT_DB='trt8_materials_db', MAT_STORE='files';
+function openMaterialDB(){
+ return new Promise((resolve,reject)=>{
+   try{
+     const req=indexedDB.open(MAT_DB,1);
+     req.onupgradeneeded=e=>{
+       const db=e.target.result;
+       if(!db.objectStoreNames.contains(MAT_STORE))db.createObjectStore(MAT_STORE)
+     };
+     req.onsuccess=e=>resolve(e.target.result);
+     req.onerror=()=>reject(req.error)
+   }catch(err){reject(err)}
+ })
+}
+async function saveMaterialFile(id,file){
+ if(!file)return false;
+ try{
+   const db=await openMaterialDB();
+   await new Promise((resolve,reject)=>{
+     const tx=db.transaction(MAT_STORE,'readwrite');
+     tx.objectStore(MAT_STORE).put(file,id);
+     tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)
+   });
+   db.close();return true
+ }catch(e){console.warn('IndexedDB indisponível',e);return false}
+}
+async function openMaterialFile(id){
+ try{
+   const db=await openMaterialDB();
+   const file=await new Promise((resolve,reject)=>{
+     const tx=db.transaction(MAT_STORE,'readonly');
+     const req=tx.objectStore(MAT_STORE).get(id);
+     req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)
+   });
+   db.close();
+   if(!file){alert('O arquivo não está armazenado neste navegador. O cadastro do material continua disponível.');return}
+   const url=URL.createObjectURL(file);
+   window.open(url,'_blank');
+   setTimeout(()=>URL.revokeObjectURL(url),60000)
+ }catch(e){alert('Não foi possível abrir o arquivo local neste navegador.')}
+}
+async function deleteMaterialFile(id){
+ try{
+   const db=await openMaterialDB();
+   await new Promise((resolve,reject)=>{
+     const tx=db.transaction(MAT_STORE,'readwrite');
+     tx.objectStore(MAT_STORE).delete(id);
+     tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)
+   });db.close()
+ }catch(e){}
+}
+function populateMaterialTopics(){populateMaterialTopicsSafe()}
+async function addMaterial(){
+ if(!matName.value.trim()){alert('Informe o nome do material.');return}
+ let file=matFile.files[0]||null,id='mat_'+Date.now()+'_'+Math.random().toString(36).slice(2,7);
+ let stored=false;if(file)stored=await saveMaterialFile(id,file);
+ state.materials.push({
+   id,course:matCourse.value,type:matType.value,subject:matSubject.value,topic:matTopic.value,topicKey:canonicalTopicKey(matSubject.value,matTopic.value),
+   name:matName.value.trim(),status:matStatus.value,notes:matNotes.value.trim(),currentPage:+matCurrentPage.value||0,totalPages:+matTotalPages.value||0,
+   fileName:file?file.name:'',fileType:file?file.type:'',fileStored:stored,
+   createdAt:new Date().toISOString()
+ });
+ syncTopicState(matSubject.value,matTopic.value);save();clearMaterialForm();
+ if(file&&!stored)alert('O material foi cadastrado, mas o navegador não permitiu armazenar o arquivo. Mantenha o PDF na sua pasta local.')
+}
+function clearMaterialForm(){
+ matName.value='';matNotes.value='';matFile.value='';matStatus.value='Não iniciado';matCurrentPage.value=0;matTotalPages.value=0
+}
+function materialStatusClass(st){return st==='Concluído'?'green':st==='Revisar'?'gold':st==='Em estudo'?'':'gray'}
+function updateMaterialStatus(id,val){let m=state.materials.find(x=>x.id===id);if(!m)return;m.status=val;syncTopicState(m.subject,m.topic);save()}
+async function deleteMaterial(id){
+ if(!confirm('Excluir este material da central?'))return;
+ state.materials=state.materials.filter(x=>x.id!==id);await deleteMaterialFile(id);save()
+}
+function editMaterialNotes(id){
+ let m=state.materials.find(x=>x.id===id);if(!m)return;
+ let v=prompt('Anotações / resumo manual:',m.notes||'');if(v===null)return;m.notes=v;save()
+}
+function renderMaterials(){
+ let q=norm((typeof matSearch!=='undefined'&&matSearch.value)||''),fc=(typeof matFilterCourse!=='undefined'&&matFilterCourse.value)||'',fs=(typeof matFilterStatus!=='undefined'&&matFilterStatus.value)||'';
+ let arr=state.materials.filter(m=>(!q||norm([m.name,m.course,m.type,m.subject,m.topic,m.notes,m.fileName].join(' ')).includes(q))&&(!fc||m.course===fc)&&(!fs||m.status===fs));
+ if(typeof matTotal!=='undefined'){matTotal.textContent=state.materials.length;matPdf.textContent=state.materials.filter(m=>/pdf/i.test(m.type)||/\.pdf$/i.test(m.fileName||'')).length;matStudying.textContent=state.materials.filter(m=>m.status==='Em estudo').length;matReviewed.textContent=state.materials.filter(m=>m.status==='Concluído').length}
+ if(!arr.length){materialHistory.innerHTML='<div class="empty"><strong>Nenhum material encontrado.</strong>Cadastre seu primeiro PDF, norma ou resumo.</div>';return}
+ let groups={};arr.forEach(m=>{let k=m.subject||'Sem matéria';(groups[k]||(groups[k]=[])).push(m)});
+ materialHistory.innerHTML=Object.entries(groups).map(([g,items])=>`
+   <div class="group">${g}</div>
+   <div class="stack">${items.map(m=>`
+     <div class="card" style="padding:14px">
+       <div class="row" style="justify-content:space-between;align-items:flex-start">
+         <div style="min-width:0;flex:1">
+           <strong style="font-size:13px">${m.name}</strong>
+           <div class="muted" style="margin-top:4px">${m.course} • ${m.type}${m.topic?' • '+m.topic:''}</div>
+           ${m.fileName?`<div class="muted" style="margin-top:4px">Arquivo: ${m.fileName}${m.fileStored?' • armazenado localmente':' • cadastro apenas'}</div>`:''}
+           ${m.totalPages?`<div class="muted" style="margin-top:5px">Progresso: ${m.currentPage||0}/${m.totalPages} páginas • ${Math.min(100,Math.round((m.currentPage||0)/m.totalPages*100))}%</div>`:''}
+           ${m.notes?`<div class="note-card" style="margin-top:9px;white-space:pre-wrap">${m.notes}</div>`:''}
+         </div>
+         <span class="tag ${materialStatusClass(m.status)}">${m.status}</span>
+       </div>
+       <div class="row" style="margin-top:10px">
+         <select class="control" style="width:auto;padding:7px" onchange="updateMaterialStatus('${m.id}',this.value)">
+           ${['Não iniciado','Em estudo','Revisar','Concluído'].map(s=>`<option ${s===m.status?'selected':''}>${s}</option>`).join('')}
+         </select>
+         ${m.fileName?`<button class="btn" onclick="openMaterialFile('${m.id}')">Abrir arquivo</button>`:''}
+         <button class="btn" onclick="editMaterialProgress('${m.id}')">Progresso</button><button class="btn" onclick="editMaterialNotes('${m.id}')">Editar notas</button>
+         <button class="btn danger" onclick="deleteMaterial('${m.id}')">Excluir</button>
+       </div>
+     </div>`).join('')}</div>`).join('')
+}
+function exportMaterialIndex(){
+ const rows=state.materials.map(m=>[m.name,m.course,m.type,m.subject,m.topic||'',m.status,m.fileName||'',m.notes||'']);
+ let csv=[['Material','Curso/Origem','Tipo','Matéria','Assunto','Status','Arquivo','Anotações'],...rows]
+   .map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\n');
+ let blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download='indice_materiais_trt8.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
+}
+
+function populateDiscursiveTopics(){populateDiscursiveTopicsSafe()}
+function refreshSetupStatus(){setupStatus.textContent=configured()?('Plano '+fmtDate(state.planning?.start||'2026-10-01')+' → '+fmtDate(state.planning?.end||'2026-11-30')):'Configuração incompleta';setupStatus.style.color=configured()?'#587061':'#8d807e'}
+
+function renderPrintSelector(){printSelector.innerHTML=TOPICS.map(t=>`<label class="item"><input type="checkbox" class="pSel" value="${t.id}" ${state.printSelected.includes(t.id)?'checked':''}><main><strong>${t.title}</strong><div class="muted">${t.group}</div></main></label>`).join('');document.querySelectorAll('.pSel').forEach(c=>c.onchange=()=>{state.printSelected=[...document.querySelectorAll('.pSel:checked')].map(x=>+x.value);save()})}
+function selectAllPrint(){state.printSelected=TOPICS.map(t=>t.id);save()}function clearPrint(){state.printSelected=[];save()}
+function printSelected(){if(!state.printSelected.length){alert('Selecione pelo menos um conteúdo.');return}let arr=TOPICS.filter(t=>state.printSelected.includes(t.id));printContent.innerHTML='<h1>TRT-8 • Analista Judiciário — Arquitetura</h1><p>Conteúdos selecionados</p>'+arr.map(t=>`<section style="page-break-inside:avoid;margin:20px 0"><h3>${t.title}</h3><small>${t.group}</small><ul>${t.subs.map(s=>`<li>${s}</li>`).join('')}</ul></section>`).join('');window.print()}
+function exportBackup(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='trt8-study-hub-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importBackup(file){if(!file)return;let r=new FileReader();r.onload=()=>{try{state=Object.assign(structuredClone(DEFAULT_STATE),JSON.parse(r.result));save();alert('Backup importado.')}catch(e){alert('Arquivo inválido.')}};r.readAsText(file)}
+function resetAll(){if(confirm('Zerar todos os dados registrados neste navegador?')){state=structuredClone(DEFAULT_STATE);localStorage.removeItem('trt8hub');refreshAll();alert('Dados zerados.')}}
+
+
+
+
+function toggleMoreMenu(e){if(e)e.stopPropagation();if(typeof moreMenu!=='undefined')moreMenu.classList.toggle('open')}
+document.addEventListener('click',e=>{if(typeof moreMenu!=='undefined'&&!moreMenu.contains(e.target))moreMenu.classList.remove('open')});
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('.topnav button[data-page],.more-menu button[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+});
+
+function updateGreeting(){
+ const now=new Date(),h=now.getHours();
+ let sal=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+ if(typeof greetingTitle!=='undefined')greetingTitle.textContent=`${sal}, Fernanda`;
+ if(typeof greetingSubtitle!=='undefined'){
+   const day=now.toLocaleDateString('pt-BR',{weekday:'long'});
+   greetingSubtitle.textContent=`${day.charAt(0).toUpperCase()+day.slice(1)}. Vamos continuar no ritmo do seu plano.`;
+ }
+ if(typeof homeDate!=='undefined')homeDate.textContent=now.toLocaleDateString('pt-BR',{day:'2-digit',month:'long'});
+}
+
+function renderWhereStopped(){
+ if(typeof whereStopped==='undefined')return;
+ let recent=state.sessions.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,5);
+ if(!recent.length){whereStopped.innerHTML='<div class="empty"><strong>Ainda sem histórico.</strong>Quando você estudar, os últimos assuntos aparecem aqui.</div>';return}
+ whereStopped.innerHTML=`<div class="topic-mini-list">${recent.map(s=>{
+   let t=getTopicRecord(s.group,s.topic),mats=state.materials.filter(m=>m.subject===s.group&&(m.topic===s.topic||!m.topic)),mat=mats.find(m=>m.status==='Em estudo')||mats[0];
+   return `<div class="topic-mini-item topic-row-click" onclick="${t?`openTopicDetail('${t.id}')`:`studyTopic(${JSON.stringify(s.group)},${JSON.stringify(s.topic)})`}"><strong>${s.topic}</strong><small>${new Date(s.date).toLocaleDateString('pt-BR')} • ${s.mins||0} min${mat&&mat.totalPages?` • ${mat.name}: pág. ${mat.currentPage||0}/${mat.totalPages}`:''}</small></div>`
+ }).join('')}</div>`
+}
+
+function syncHomeMentor(){
+ if(typeof homeMentorTitle==='undefined')return;
+ let ranked=TOPICS.map(mentorScoreTopic).sort((a,b)=>b.score-a.score),pick=ranked[0];
+ if(!pick){homeMentorTitle.textContent='Configure seu plano para começar';homeMentorWhy.textContent='A mentoria passa a orientar você conforme os registros aparecem.';return}
+ homeMentorTitle.textContent=pick.topic.title;
+ homeMentorWhy.textContent=pick.reasons.slice(0,2).join(' • ')||'melhor encaixe atual';
+}
+
+function todayISO(){return new Date().toISOString().slice(0,10)}
+function weekBounds(dateStr=todayISO()){
+ let d=parseDate(dateStr),idx=(d.getDay()+6)%7,m=new Date(d);m.setDate(m.getDate()-idx);let s=new Date(m);s.setDate(s.getDate()+6);return [isoDate(m),isoDate(s)]
+}
+function latestEnergy(){
+ let t=todayISO(),x=[...state.checkins].reverse().find(c=>c.date===t);return x?.energy||''
+}
+function setEnergy(level,btn){
+ let t=todayISO();state.checkins=state.checkins.filter(c=>c.date!==t);state.checkins.push({date:t,energy:level});save();
+ document.querySelectorAll('.energy-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderMentorship()
+}
+function mentorScoreTopic(t){
+ let m=topicMetrics(t.group,t.title),score=0,reasons=[];
+ let st=topicStatus(t.id);
+ if(st==='Não iniciado'){score+=20;reasons.push('ainda não iniciado')}
+ if(st==='Revisar'){score+=30;reasons.push('marcado para revisão')}
+ if(m.totalQ>=10&&m.accuracy!==null&&m.accuracy<70){score+=35;reasons.push(`acerto de ${m.accuracy}%`)}
+ let pending=m.reviews.filter(r=>!r.done&&r.due<=todayISO()).length;if(pending){score+=25+pending*3;reasons.push(`${pending} revisão(ões) vencida(s)`)}
+ let planned=state.schedule.some(s=>s.date===todayISO()&&s.topic===t.title&&s.status!=='completed'&&s.status!=='moved');if(planned){score+=40;reasons.push('está no cronograma de hoje')}
+ let priority=['Fiscalização de obras e serviços','Orçamento de obras','Tecnologia das construções','Acessibilidade arquitetônica','Medições de obras','Licitações e contratos administrativos','Planejamento de obras','Produção discursiva técnica','Programa, concepção e desenvolvimento de projetos','Materiais e especificações'].includes(t.title);
+ if(priority){score+=18;reasons.push('prioridade alta')}
+ let last=state.sessions.filter(s=>s.topic===t.title).sort((a,b)=>b.date.localeCompare(a.date))[0];
+ if(last){let days=Math.floor((new Date()-new Date(last.date))/86400000);if(days>=10){score+=Math.min(20,days);reasons.push(`${days} dias sem contato`)}} else score+=8;
+ return {topic:t,score,reasons,m}
+}
+function renderMentorship(){
+ if(typeof mentorTodayTitle==='undefined')return;
+ let ranked=TOPICS.map(mentorScoreTopic).sort((a,b)=>b.score-a.score),pick=ranked[0];
+ let energy=latestEnergy();document.querySelectorAll('.energy-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim()===energy));
+ if(pick){
+   mentorTodayTitle.textContent=pick.topic.title;
+   let why=pick.reasons.slice(0,3).join(' • ')||'melhor encaixe atual';
+   if(energy==='Baixa')why+=' • energia baixa: priorize bloco curto/revisão';
+   mentorTodayWhy.textContent=why;
+   mentorTodayAction.innerHTML=`<button class="btn primary" onclick="studyTopic(${JSON.stringify(pick.topic.group)},${JSON.stringify(pick.topic.title)})">Estudar agora</button><button class="btn" onclick="materialsForTopic(${JSON.stringify(pick.topic.group)},${JSON.stringify(pick.topic.title)})">Ver materiais</button>`;
+ }
+ let alerts=[];
+ let overdue=state.reviews.filter(r=>!r.done&&r.due<todayISO()).length;if(overdue)alerts.push(`${overdue} revisão(ões) vencida(s)`);
+ let [ws,we]=weekBounds(),plan=state.schedule.filter(s=>s.date>=ws&&s.date<=we&&s.status!=='moved'),done=plan.filter(s=>s.status==='completed').length;
+ if(plan.length&&done<plan.length)alerts.push(`${plan.length-done} sessão(ões) da semana ainda não concluída(s)`);
+ let low=ranked.filter(x=>x.m.totalQ>=10&&x.m.accuracy!==null&&x.m.accuracy<70).slice(0,3);low.forEach(x=>alerts.push(`${x.topic.title}: ${x.m.accuracy}% de acerto`));
+ if(!alerts.length)alerts.push('Nenhum alerta crítico no momento.');
+ mentorAlerts.innerHTML=alerts.map(a=>`<div class="alert-item"><span class="alert-dot"></span><div>${a}</div></div>`).join('');
+ let plannedMin=plan.reduce((a,s)=>a+s.duration,0),doneMin=plan.filter(s=>s.status==='completed').reduce((a,s)=>a+(s.actualMinutes||s.duration),0),pct=plannedMin?Math.round(doneMin/plannedMin*100):0;
+ mentorWeek.innerHTML=`<div class="mini-grid"><div class="mini-stat"><strong>${(plannedMin/60).toFixed(1)}h</strong><span>planejado</span></div><div class="mini-stat"><strong>${(doneMin/60).toFixed(1)}h</strong><span>cumprido</span></div><div class="mini-stat"><strong>${pct}%</strong><span>execução</span></div><div class="mini-stat"><strong>${state.questions.filter(q=>q.date>=ws&&q.date<=we).reduce((a,q)=>a+q.count,0)}</strong><span>questões</span></div></div>`;
+ mentorWeak.innerHTML=ranked.slice(0,5).map(x=>`<div class="priority-card"><strong>${x.topic.title}</strong><div class="muted" style="margin-top:3px">${x.reasons.slice(0,2).join(' • ')||'sem histórico suficiente'}</div></div>`).join('');
+ let qs=state.questions.filter(q=>q.date>=ws&&q.date<=we),qt=qs.reduce((a,q)=>a+q.count,0),qr=qs.reduce((a,q)=>a+q.correct,0);
+ weeklyClose.innerHTML=`<div class="mini-grid"><div class="mini-stat"><strong>${done}/${plan.length||0}</strong><span>sessões</span></div><div class="mini-stat"><strong>${qt}</strong><span>questões</span></div><div class="mini-stat"><strong>${qt?Math.round(qr/qt*100)+'%':'—'}</strong><span>acerto</span></div><div class="mini-stat"><strong>${state.reviews.filter(r=>r.done&&r.completedAt&&r.completedAt.slice(0,10)>=ws&&r.completedAt.slice(0,10)<=we).length}</strong><span>revisões feitas</span></div></div>`;
+}
+function exportWeeklySummary(){
+ let [ws,we]=weekBounds(),plan=state.schedule.filter(s=>s.date>=ws&&s.date<=we&&s.status!=='moved'),qs=state.questions.filter(q=>q.date>=ws&&q.date<=we);
+ let text=`TRT-8 Study Hub — Fechamento semanal\n${fmtDate(ws)} a ${fmtDate(we)}\n\nSessões concluídas: ${plan.filter(s=>s.status==='completed').length}/${plan.length}\nTempo planejado: ${(plan.reduce((a,s)=>a+s.duration,0)/60).toFixed(1)}h\nQuestões: ${qs.reduce((a,q)=>a+q.count,0)}\nAcertos: ${qs.reduce((a,q)=>a+q.correct,0)}\n\nAlertas:\n${mentorAlerts.innerText}`;
+ let b=new Blob([text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`fechamento_${ws}_${we}.txt`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
+}
+function populateErrorTopics(){populateErrorTopicsSafe()}
+function addSimulation(){
+ let count=+simCount.value||0,correct=+simCorrect.value||0;if(!simName.value.trim()||count<1||correct>count){alert('Revise nome, questões e acertos.');return}
+ state.simulations.push({id:'sim_'+Date.now(),name:simName.value.trim(),date:simDate.value||todayISO(),count,correct,time:+simTime.value||0,board:simBoard.value||'FCC',breakdown:simBreakdown.value.trim(),notes:simNotes.value.trim()});save();simName.value='';simCount.value='';simCorrect.value='';simTime.value='';simBreakdown.value='';simNotes.value=''
+}
+
+const EXAM_BANK=[
+ {id:'trt15_2025',title:'TRT-15 • Analista Judiciário — Arquitetura',year:2025,board:'FCC',questions:'62 itens na página de prova',time:'4h30 no edital/aplicação',fit:'Prioridade máxima',note:'Mais próxima do perfil que estamos usando para o TRT-8: FCC, TRT e especialidade Arquitetura.',url:'https://questoes.grancursosonline.com.br/prova/trt-15-2025-fcc-analista-judiciario-area-apoio-especializado-especialidade-arquitetura',source:'Gran Questões',recommended:true},
+ {id:'trt4_2022',title:'TRT-4 • Analista Judiciário — Arquitetura',year:2022,board:'FCC',questions:'61 itens na página de prova',time:'4h',fit:'Prioridade alta',note:'Excelente prova FCC específica de Arquitetura para treinar conteúdo técnico e estilo da banca.',url:'https://questoes.grancursosonline.com.br/prova/trt-4-2022-fcc-analista-judiciario-area-apoio-especializado-especialidade-arquitetura',source:'Gran Questões',recommended:true},
+ {id:'trt4_online',title:'TRT-4 • Prova oficial em modo simulado',year:2022,board:'FCC',questions:'60 questões',time:'4h',fit:'Treino online',note:'Alternativa para fazer a prova diretamente como simulado cronometrado, sem precisar montar manualmente.',url:'https://olhonavaga.com.br/simulados/simulado?id=24652',source:'Olho na Vaga',recommended:false},
+ {id:'trt8_2022',title:'TRT-8 • Analista Judiciário — Arquitetura',year:2022,board:'CEBRASPE',questions:'Objetiva + discursiva',time:'ver prova',fit:'Conteúdo/cargo',note:'A banca é diferente da FCC, mas o cargo e o próprio TRT-8 tornam esta prova valiosa para mapear conteúdo e discursiva.',url:'https://www.tecconcursos.com.br/concursos/analista-judiciario-trt-8-regiao-apoio-especializado-arquitetura-2022',source:'TEC Concursos',recommended:false}
+];
+function openExam(url){window.open(url,'_blank','noopener')}
+function useExamForSimulation(id){
+ let x=EXAM_BANK.find(e=>e.id===id);if(!x)return;
+ simName.value=x.title;simBoard.value=x.board;simDate.value=todayISO();
+ let n=parseInt(x.questions);if(Number.isFinite(n))simCount.value=n;
+ document.getElementById('simName').scrollIntoView({behavior:'smooth',block:'center'})
+}
+function saveExamAsMaterial(id){
+ let x=EXAM_BANK.find(e=>e.id===id);if(!x)return;
+ go('materials');
+ matCourse.value='Outro';matType.value='Outro';matName.value=x.title+' — prova anterior';
+ matNotes.value=`Fonte: ${x.source}\nBanca: ${x.board}\nAno: ${x.year}\nLink: ${x.url}\nUso: ${x.note}`;
+}
+function renderExamBank(){
+ if(typeof examBank==='undefined')return;
+ examBank.innerHTML=EXAM_BANK.map(x=>`<div class="exam-card ${x.recommended?'recommended':''}">
+   <div class="exam-card-top"><div><div class="exam-rank">${x.fit}</div><h4>${x.title}</h4></div><span class="tag">${x.board}</span></div>
+   <div class="exam-meta">${x.year} • ${x.questions} • ${x.time}<br>Fonte: ${x.source}</div>
+   <div class="exam-note">${x.note}</div>
+   <div class="exam-actions"><button class="btn primary" onclick="openExam('${x.url}')">Abrir prova</button><button class="btn" onclick="useExamForSimulation('${x.id}')">Vou fazer esta</button><button class="btn quiet" onclick="saveExamAsMaterial('${x.id}')">Salvar na Central</button></div>
+ </div>`).join('')
+}
+
+function renderSimulations(){if(typeof simulationList==='undefined')return;simulationList.innerHTML=state.simulations.length?state.simulations.slice().reverse().map(s=>`<div class="card" style="margin-bottom:8px"><div class="row" style="justify-content:space-between"><div><strong>${s.name}</strong><div class="muted">${s.date} • ${s.board} • ${s.time||0} min</div></div><span class="tag">${Math.round(s.correct/s.count*100)}%</span></div><div class="muted" style="margin-top:6px">${s.correct}/${s.count} acertos</div>${s.breakdown?`<div style="margin-top:7px"><strong style="font-size:9px">Por matéria</strong><div class="muted">${s.breakdown}</div></div>`:''}${s.notes?`<div style="margin-top:7px">${s.notes}</div>`:''}</div>`).join(''):'<div class="empty"><strong>Nenhum simulado registrado.</strong></div>'}
+function editMaterialProgress(id){let m=state.materials.find(x=>x.id===id);if(!m)return;let cur=Number(prompt('Página atual:',m.currentPage||0));if(!Number.isFinite(cur)||cur<0)return;let tot=m.totalPages||0;if(!tot){tot=Number(prompt('Total de páginas:',0))||0}m.currentPage=cur;m.totalPages=tot;if(tot&&cur>=tot)m.status='Concluído';else if(cur>0&&m.status==='Não iniciado')m.status='Em estudo';syncTopicState(m.subject,m.topic);save()}
+let calendarMonth=todayISO().slice(0,7)+'-01';
+function moveMonth(n){let d=parseDate(calendarMonth);d.setMonth(d.getMonth()+n);calendarMonth=isoDate(new Date(d.getFullYear(),d.getMonth(),1,12));renderCalendar()}
+function calendarToToday(){calendarMonth=todayISO().slice(0,7)+'-01';renderCalendar()}
+function renderCalendar(){
+ if(typeof monthCalendar==='undefined')return;
+ let first=parseDate(calendarMonth),y=first.getFullYear(),m=first.getMonth(),start=new Date(y,m,1,12),offset=(start.getDay()+6)%7;start.setDate(start.getDate()-offset);
+ monthLabel.textContent=new Date(y,m,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ let heads=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'].map(x=>`<div class="cal-head">${x}</div>`).join(''),cells='';
+ for(let i=0;i<42;i++){let d=new Date(start);d.setDate(d.getDate()+i);let date=isoDate(d),events=[];
+   state.schedule.filter(s=>s.date===date&&s.status!=='moved').slice(0,2).forEach(s=>events.push(s.topic));
+   state.reviews.filter(r=>r.due===date&&!r.done).slice(0,1).forEach(r=>events.push('Revisão: '+r.topic));
+   state.simulations.filter(s=>s.date===date).slice(0,1).forEach(s=>events.push('Simulado: '+s.name));
+   state.discursives.filter(x=>(x.date||'').slice(0,10)===date).slice(0,1).forEach(x=>events.push('Discursiva'));
+   cells+=`<div class="cal-day ${d.getMonth()!==m?'muted':''} ${date===todayISO()?'today':''}"><div class="cal-num">${d.getDate()}</div>${events.map(e=>`<div class="cal-event">${e}</div>`).join('')}</div>`
+ }
+ monthCalendar.innerHTML=`<div class="calendar-grid">${heads}${cells}</div>`
+}
+function escICS(s){return String(s||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;')}
+function exportICS(){
+ let ev=[];
+ state.schedule.filter(s=>s.status!=='moved').forEach(s=>{let dt=s.date.replaceAll('-','');ev.push(`BEGIN:VEVENT\nUID:${s.id}@trt8studyhub\nDTSTART;VALUE=DATE:${dt}\nSUMMARY:${escICS('Estudo — '+s.topic)}\nDESCRIPTION:${escICS(s.group+' • '+s.duration+' min')}\nEND:VEVENT`)});
+ state.reviews.filter(r=>!r.done).forEach(r=>{let dt=r.due.replaceAll('-','');ev.push(`BEGIN:VEVENT\nUID:${r.id}@trt8studyhub\nDTSTART;VALUE=DATE:${dt}\nSUMMARY:${escICS('Revisão — '+r.topic)}\nEND:VEVENT`)});
+ let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//TRT8 Study Hub//PT-BR\n'+ev.join('\n')+'\nEND:VCALENDAR';
+ let b=new Blob([ics],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='trt8_study_hub_calendario.ics';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
+}
+function exportFullBackup(){
+ let payload={version:6,exportedAt:new Date().toISOString(),state};
+ let b=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`trt8_backup_${todayISO()}.json`;a.click();localStorage.setItem('trt8_last_backup',new Date().toISOString());setTimeout(()=>URL.revokeObjectURL(a.href),1000);renderBackupStatus()
+}
+function importFullBackupFile(input){
+ let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let obj=JSON.parse(r.result);state=obj.state||obj;localStorage.setItem('trt8hub',JSON.stringify(state));alert('Backup importado. A página será recarregada.');location.reload()}catch(e){alert('Arquivo de backup inválido.')}};r.readAsText(f)
+}
+function renderBackupStatus(){let el=document.getElementById('backupStatus');if(!el)return;let x=localStorage.getItem('trt8_last_backup');el.textContent=x?'Último backup exportado: '+new Date(x).toLocaleString('pt-BR'):'Nenhum backup exportado neste dispositivo.'}
+
+function refreshAll(){attachTopicKeys();localStorage.setItem('trt8hub',JSON.stringify(state));updateGreeting();initAvailability();renderSubjectSelector();renderEdital();renderSchedule();renderToday();renderQuestions();renderReviews();renderMaterials();renderDiscursives();renderPerformance();renderPrintSelector();refreshSetupStatus();populateFocus();renderFocusContext();renderMentorship();syncHomeMentor();renderWhereStopped();renderErrors();renderSimulations();renderExamBank();renderCalendar();renderBackupStatus();
+ if(state.method){sessionLength.value=state.method.sessionLength;maxSubjects.value=state.method.maxSubjects;theoryPct.value=state.method.theoryPct;questionsPct.value=state.method.questionsPct;mainSource.value=state.method.mainSource;reviewScheme.value=state.method.reviewScheme}
+ planStart.value=state.planning?.start||'2026-10-01';planEnd.value=state.planning?.end||'2026-11-30';replanMode.value=state.planning?.replanMode||'balanced';autoReplan.checked=state.planning?.autoReplan!==false;
+}
+qDate.value=new Date().toISOString().slice(0,10);refreshAll();
+
+document.addEventListener('DOMContentLoaded',()=>{
+  try{initializeStudySelects()}catch(e){console.error('Falha ao inicializar matérias/assuntos',e)}
+});
+
+</script>
+</body></html>
